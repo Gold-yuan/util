@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * ¼ÆËãÄê¼Ù Êä³ö¼¸ÔÂ·İÓĞ¼¸ÌìÄê¼Ù
+ * è®¡ç®—å¹´å‡ è¾“å‡ºå‡ æœˆä»½æœ‰å‡ å¤©å¹´å‡
  * 
  * @author adminytf
  */
@@ -18,44 +18,44 @@ public class NewYearHoliday {
 			String solarDateStr = CalendarUtil.lunarToSolar(i + "0101", false);
 			Calendar Jan = Calendar.getInstance();
 			Jan.setTime(sf.parse(solarDateStr));
-			Jan.add(Calendar.DAY_OF_MONTH, -1);// ¼õÒ»ÌìÎª³ıÏ¦
+			Jan.add(Calendar.DAY_OF_MONTH, -1);// å‡ä¸€å¤©ä¸ºé™¤å¤•
 			Date solarDate = Jan.getTime();
-			//System.out.println("³ıÏ¦"+sf.format(solarDate));
+			//System.out.println("é™¤å¤•"+sf.format(solarDate));
 			
-			// ´«ÈëÈÕÆÚ
+			// ä¼ å…¥æ—¥æœŸ
 			Calendar solarDay = Calendar.getInstance();
 			solarDay.setTime(solarDate);
 
-			// ÔÂÄ©
+			// æœˆæœ«
 			Calendar monthLastDay = Calendar.getInstance();
 			monthLastDay.setTime(solarDate);
 			monthLastDay.add(Calendar.MONTH, 1);
 			monthLastDay.set(Calendar.DATE, 1);
 			monthLastDay.add(Calendar.DAY_OF_MONTH, -1);
-			// System.out.print(" ÔÂÄ©£º" + sf.format(monthLastDay.getTime()));
+			// System.out.print(" æœˆæœ«ï¼š" + sf.format(monthLastDay.getTime()));
 
-			// ÔÂ³õ
+			// æœˆåˆ
 			Calendar monthFirstDay = Calendar.getInstance();
 			monthFirstDay.setTime(solarDate);
 			monthFirstDay.set(Calendar.DATE, 1);
-			// System.out.println(" ÔÂ³õ£º" + sf.format(monthFirstDay.getTime()));
+			// System.out.println(" æœˆåˆï¼š" + sf.format(monthFirstDay.getTime()));
 
-			// ÉèÖÃ7ÌìÇ°ºóµÄÇø¼ä¡£1+5 = 6 £¬Èô¡µ6ÔòÖÁÉÙÊÇ7¿ªÊ¼¡£ËùÒÔ¼Ó5Ìì
+			// è®¾ç½®7å¤©å‰åçš„åŒºé—´ã€‚1+5 = 6 ï¼Œè‹¥ã€‰6åˆ™è‡³å°‘æ˜¯7å¼€å§‹ã€‚æ‰€ä»¥åŠ 5å¤©
 			Calendar betweenStartDay = Calendar.getInstance();
 			betweenStartDay.setTime(monthFirstDay.getTime());
 			betweenStartDay.add(Calendar.DAY_OF_MONTH, -1);
 			Calendar betweenEndDay = Calendar.getInstance();
 			betweenEndDay.setTime(monthLastDay.getTime());
 			betweenEndDay.add(Calendar.DAY_OF_MONTH, -5);
-			// 1.·Å¼Ù7Ìì¶¼ÔÚµ±ÔÂ¡£´óÓÚÉÏÔÂÄ©£¬Ğ¡ÓÚÕâÔÂÄ©-5
+			// 1.æ”¾å‡7å¤©éƒ½åœ¨å½“æœˆã€‚å¤§äºä¸Šæœˆæœ«ï¼Œå°äºè¿™æœˆæœ«-5
 			if (solarDay.after(betweenStartDay) && solarDay.before(betweenEndDay)) {
 				sout(solarDay, holiday);
 			}
-			// 2.·Å¼Ù7ÌìÒ»²¿·ÖÔÚºóÒ»ÔÂ
+			// 2.æ”¾å‡7å¤©ä¸€éƒ¨åˆ†åœ¨åä¸€æœˆ
 			else {
 				int nowDay = monthLastDay.get(Calendar.DAY_OF_MONTH) - solarDay.get(Calendar.DAY_OF_MONTH) + 1;
 
-				// ºóÒ»ÔÂ¼¸Ìì
+				// åä¸€æœˆå‡ å¤©
 				Calendar afterDayCal = Calendar.getInstance();
 				afterDayCal.setTime(solarDate);
 				afterDayCal.add(Calendar.MONTH, 1);
@@ -74,9 +74,9 @@ public class NewYearHoliday {
 			c.setTime(cal.getTime());
 			c.set(Calendar.MONTH, i);
 			if (i == month) {
-				System.out.println("Å©ÀúÄê,È«²¿º½Ïß," + sf.format(cal.getTime()) + "," + day);
+				System.out.println("å†œå†å¹´,å…¨éƒ¨èˆªçº¿," + sf.format(cal.getTime()) + "," + day);
 			} else {
-				System.out.println("Å©ÀúÄê,È«²¿º½Ïß," + sf.format(c.getTime()) + ",0");
+				System.out.println("å†œå†å¹´,å…¨éƒ¨èˆªçº¿," + sf.format(c.getTime()) + ",0");
 			}
 		}
 	}
@@ -91,11 +91,11 @@ public class NewYearHoliday {
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM");
 		for (int i = 0; i < 12; i++) {
 			if (i == monthb) {
-				System.out.println("Å©ÀúÄê,È«²¿º½Ïß," + sf.format(before.getTime()) + "," + dayb);
+				System.out.println("å†œå†å¹´,å…¨éƒ¨èˆªçº¿," + sf.format(before.getTime()) + "," + dayb);
 			} else if (i == montha) {
-				System.out.println("Å©ÀúÄê,È«²¿º½Ïß," + sf.format(after.getTime()) + "," + daya);
+				System.out.println("å†œå†å¹´,å…¨éƒ¨èˆªçº¿," + sf.format(after.getTime()) + "," + daya);
 			} else {
-				System.out.println("Å©ÀúÄê,È«²¿º½Ïß," + sf.format(c.getTime()) + ",0");
+				System.out.println("å†œå†å¹´,å…¨éƒ¨èˆªçº¿," + sf.format(c.getTime()) + ",0");
 			}
 			c.add(Calendar.MONTH, 1);
 		}

@@ -16,27 +16,27 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 /**
- * ½âÎöEXCEL03 07²¢Èë¿â
+ * è§£æEXCEL03 07å¹¶å…¥åº“
  * 
  * @author adminytf
  * 
  */
 public class ParseExcelUtil37 {
 
-	/** Êı¾İÆğÊ¼ĞĞ,0¿ªÊ¼ */
+	/** æ•°æ®èµ·å§‹è¡Œ,0å¼€å§‹ */
 	private int startRow = 0;
-	/** Êı¾İÆğÊ¼ÁĞ,0¿ªÊ¼ */
+	/** æ•°æ®èµ·å§‹åˆ—,0å¼€å§‹ */
 	private int startCell = 0;
-	/** º¬ÈÕÆÚµÄ×Ö¶Î£¬ÈÕÆÚ¸ñÊ½,{"ym","2017-05"} */
+	/** å«æ—¥æœŸçš„å­—æ®µï¼Œæ—¥æœŸæ ¼å¼,{"ym","2017-05"} */
 	private Map<String, String> dateFormats = new HashMap<String, String>();
-	/** excelÍâµÄ¹Ì¶¨×Ö¶Î,{"id":"1001"} */
+	/** excelå¤–çš„å›ºå®šå­—æ®µ,{"id":"1001"} */
 	private Map<String, String> finalValueMap = new HashMap<String, String>();
 
 	private List<String> notNullParameter = new ArrayList<String>();
 	public static final String SHOW_DATE_FORMAT_STR = "yyyy-MM-dd";
 
 	public static void main(String[] args) throws Exception {
-		String filePath = "F:/project/¶«º½/ÎÄµµ/ÏúÊÛÔğÈÎµ¥Î»¶ÔÓ¦±í.xlsx";
+		String filePath = "F:/project/ä¸œèˆª/æ–‡æ¡£/é”€å”®è´£ä»»å•ä½å¯¹åº”è¡¨.xlsx";
 		ParseExcelUtil37 pe = new ParseExcelUtil37();
 		pe.setStartCell(0);
 		pe.setStartRow(1);
@@ -49,20 +49,20 @@ public class ParseExcelUtil37 {
 	public List<Map<String, String>> parseExcel(String filePath, String[] fieldNames) throws Exception {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		Workbook workbook = null;
-		// ¼ÓÔØÎÄ¼ş
+		// åŠ è½½æ–‡ä»¶
 		try {
 			workbook = WorkbookFactory.create(new FileInputStream(filePath));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		// »ñÈ¡Ã¿Ò»¸ö¹¤×÷±¡
+		// è·å–æ¯ä¸€ä¸ªå·¥ä½œè–„
 		Sheet sheet = workbook.getSheetAt(0);
 		if (sheet == null) {
-			System.out.println("¿Õ");
+			System.out.println("ç©º");
 			return null;
 		}
-		// »ñÈ¡µ±Ç°¹¤×÷±¡µÄÃ¿Ò»ĞĞ sheet.getLastRowNum() 0¿ªÊ¼£¬ Öµ£º×î´óĞĞ-1£¬ÈôÎŞÔòÎª-1
+		// è·å–å½“å‰å·¥ä½œè–„çš„æ¯ä¸€è¡Œ sheet.getLastRowNum() 0å¼€å§‹ï¼Œ å€¼ï¼šæœ€å¤§è¡Œ-1ï¼Œè‹¥æ— åˆ™ä¸º-1
 		for (int rowNum = startRow; rowNum <= sheet.getLastRowNum(); rowNum++) {
 
 			Row row = sheet.getRow(rowNum);
@@ -70,7 +70,7 @@ public class ParseExcelUtil37 {
 				continue;
 			}
 			Map<String, String> map = new HashMap<String, String>();
-			// »ñÈ¡Ã¿ÁĞ
+			// è·å–æ¯åˆ—
 			for (int cellCount = startCell; cellCount < fieldNames.length; cellCount++) {
 				String propertyName = fieldNames[cellCount];
 				if (propertyName == null || propertyName.equals("")) {
@@ -82,7 +82,7 @@ public class ParseExcelUtil37 {
 				}
 				map.put(propertyName, this.getValue(cell, propertyName));
 			}
-			// Ğ£Ñé¿Õ
+			// æ ¡éªŒç©º
 			boolean flag = true;
 			for (String key : notNullParameter) {
 				String val = map.get(key);

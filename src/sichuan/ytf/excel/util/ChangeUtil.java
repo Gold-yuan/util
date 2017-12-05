@@ -10,39 +10,39 @@ import java.util.Vector;
 
 /**
  * 
- * ×ª»»¹¤¾ßÀà
+ * è½¬æ¢å·¥å…·ç±»
  *
  */
 @SuppressWarnings("rawtypes")
 public class ChangeUtil {
 	/**
-	 * Ê±¼ä¸ñÊ½(ÄêÔÂÈÕ£©
+	 * æ—¶é—´æ ¼å¼(å¹´æœˆæ—¥ï¼‰
 	 */
 	public static final String DATE_FORMAT_YMD = "yyyyMMdd";
 	/**
-	 * Ê±¼ä¸ñÊ½£¨ÄêÔÂ£©
+	 * æ—¶é—´æ ¼å¼ï¼ˆå¹´æœˆï¼‰
 	 */
 	public static final String DATE_FORMAT_YM = "yyyyMM";
 	/**
-	 * Ê±¼ä¸ñÊ½£¨Äê£©
+	 * æ—¶é—´æ ¼å¼ï¼ˆå¹´ï¼‰
 	 */
 	public static final String DATE_FORMAT_Y = "yyyy";
 
 	public static final String DATE_FORMAT_YMD_HMS = "yyyy-MM-dd HH:mm:ss";
 
 	/**
-	 * ChangeUtilÀàµÄÈ±Ê¡¹¹ÔìÆ÷¡£
+	 * ChangeUtilç±»çš„ç¼ºçœæ„é€ å™¨ã€‚
 	 */
 	private ChangeUtil() {
 	}
 
 	/**
-	 * ½«Ò»¸öÒÔ','·Ö¸îµÄ×Ö·û´®£¬×ª»»ÎªÒ»¸öVector¶ÔÏó¡£ÕâÊÇchangeStringToVector(String str, String
-	 * token)µÄ¼ò»¯°æ±¾¡£
+	 * å°†ä¸€ä¸ªä»¥','åˆ†å‰²çš„å­—ç¬¦ä¸²ï¼Œè½¬æ¢ä¸ºä¸€ä¸ªVectorå¯¹è±¡ã€‚è¿™æ˜¯changeStringToVector(String str, String
+	 * token)çš„ç®€åŒ–ç‰ˆæœ¬ã€‚
 	 * 
 	 * @param _str
-	 *            ĞèÒª×ª»»µÄ×Ö·û´®
-	 * @return °üº¬ÁË×Ö·û´®ÖĞÔªËØµÄVector¶ÔÏó¡£
+	 *            éœ€è¦è½¬æ¢çš„å­—ç¬¦ä¸²
+	 * @return åŒ…å«äº†å­—ç¬¦ä¸²ä¸­å…ƒç´ çš„Vectorå¯¹è±¡ã€‚
 	 * @see #changeStringToVector
 	 */
 	public static Vector changeStringToVector(String _str) {
@@ -50,13 +50,13 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ½«Ò»¸öÒÔ×Ö·û´®token·Ö¸îµÄ×Ö·û´®£¬×ª»»ÎªÒ»¸öVector¶ÔÏó¡£Èç"ĞÕÃû[token]ÄêÁä"±»×ª»»ÎªÒ»¸öVector£¬¸ÃVector°üº¬Á½¸öÔªËØ£¬µÚÒ»¸öÊÇ"ĞÕÃû"£¬µÚ¶ş¸öÊÇ"ÄêÁä"¡£
+	 * å°†ä¸€ä¸ªä»¥å­—ç¬¦ä¸²tokenåˆ†å‰²çš„å­—ç¬¦ä¸²ï¼Œè½¬æ¢ä¸ºä¸€ä¸ªVectorå¯¹è±¡ã€‚å¦‚"å§“å[token]å¹´é¾„"è¢«è½¬æ¢ä¸ºä¸€ä¸ªVectorï¼Œè¯¥VectoråŒ…å«ä¸¤ä¸ªå…ƒç´ ï¼Œç¬¬ä¸€ä¸ªæ˜¯"å§“å"ï¼Œç¬¬äºŒä¸ªæ˜¯"å¹´é¾„"ã€‚
 	 * 
 	 * @param _str
-	 *            ĞèÒª×ª»»µÄ×Ö·û´®
+	 *            éœ€è¦è½¬æ¢çš„å­—ç¬¦ä¸²
 	 * @param _token
-	 *            ×Ö·û´®ÖĞ·Ö¸îµÄtoken¡£Èç¿Õ¸ñ" "£¬»ò":"µÈ¡£
-	 * @return °üº¬ÁË×Ö·û´®ÖĞÔªËØµÄVector¶ÔÏó¡£
+	 *            å­—ç¬¦ä¸²ä¸­åˆ†å‰²çš„tokenã€‚å¦‚ç©ºæ ¼" "ï¼Œæˆ–":"ç­‰ã€‚
+	 * @return åŒ…å«äº†å­—ç¬¦ä¸²ä¸­å…ƒç´ çš„Vectorå¯¹è±¡ã€‚
 	 */
 	public static Vector changeStringToVector(String _str, String _token) {
 		if (_str == null) {
@@ -72,26 +72,26 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ½«Ò»¸öVector¶ÔÏóÖĞ±£´æµÄ×Ö·û´®ÔªËØÊ¹ÓÃ","·Ö¸ô·û×ª»»ÎªÒ»¸ö×Ö·û´®£¬ÕâÊÇpublic static Vector
-	 * changeStringToVector(String str)µÄÄæ²Ù×÷¡£
+	 * å°†ä¸€ä¸ªVectorå¯¹è±¡ä¸­ä¿å­˜çš„å­—ç¬¦ä¸²å…ƒç´ ä½¿ç”¨","åˆ†éš”ç¬¦è½¬æ¢ä¸ºä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œè¿™æ˜¯public static Vector
+	 * changeStringToVector(String str)çš„é€†æ“ä½œã€‚
 	 * 
 	 * @param _v
-	 *            °üº¬ÁË×Ö·û´®Êı¾İÔªËØµÄVector¶ÔÏó
-	 * @return Ò»¸öÒÔ","Îª·Ö¸ô·ûµÄ×Ö·û´®
+	 *            åŒ…å«äº†å­—ç¬¦ä¸²æ•°æ®å…ƒç´ çš„Vectorå¯¹è±¡
+	 * @return ä¸€ä¸ªä»¥","ä¸ºåˆ†éš”ç¬¦çš„å­—ç¬¦ä¸²
 	 */
 	public static String changeVectorToString(Vector _v) {
 		return changeVectorToString(_v, ",");
 	}
 
 	/**
-	 * ½«Ò»¸öVector¶ÔÏóÖĞ±£´æµÄ×Ö·û´®ÔªËØÊ¹ÓÃtoken·Ö¸ô·û×ª»»ÎªÒ»¸ö×Ö·û´®£¬ÕâÊÇpublic static Vector
-	 * changeStringToVector(String str, String token)µÄÄæ²Ù×÷¡£
+	 * å°†ä¸€ä¸ªVectorå¯¹è±¡ä¸­ä¿å­˜çš„å­—ç¬¦ä¸²å…ƒç´ ä½¿ç”¨tokenåˆ†éš”ç¬¦è½¬æ¢ä¸ºä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œè¿™æ˜¯public static Vector
+	 * changeStringToVector(String str, String token)çš„é€†æ“ä½œã€‚
 	 * 
 	 * @param _v
-	 *            °üº¬ÁË×Ö·û´®Êı¾İÔªËØµÄVector¶ÔÏó
+	 *            åŒ…å«äº†å­—ç¬¦ä¸²æ•°æ®å…ƒç´ çš„Vectorå¯¹è±¡
 	 * @param _token
-	 *            ×Ö·û´®ÖĞ·Ö¸îµÄtoken¡£Èç¿Õ¸ñ" "£¬»ò":"µÈ¡£
-	 * @return Ò»¸öÒÔtokenÎª·Ö¸ô·ûµÄ×Ö·û´®
+	 *            å­—ç¬¦ä¸²ä¸­åˆ†å‰²çš„tokenã€‚å¦‚ç©ºæ ¼" "ï¼Œæˆ–":"ç­‰ã€‚
+	 * @return ä¸€ä¸ªä»¥tokenä¸ºåˆ†éš”ç¬¦çš„å­—ç¬¦ä¸²
 	 */
 	public static String changeVectorToString(Vector _v, String _token) {
 		if (_v == null) {
@@ -107,11 +107,11 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ½«Ò»¸ö×Ö·û´®Êı×éÖĞ±£´æµÄ×Ö·û´®ÔªËØÊ¹ÓÃ","·Ö¸ô·û×ª»»ÎªÒ»¸ö×Ö·û´®¡£
+	 * å°†ä¸€ä¸ªå­—ç¬¦ä¸²æ•°ç»„ä¸­ä¿å­˜çš„å­—ç¬¦ä¸²å…ƒç´ ä½¿ç”¨","åˆ†éš”ç¬¦è½¬æ¢ä¸ºä¸€ä¸ªå­—ç¬¦ä¸²ã€‚
 	 * 
 	 * @param _strArray
-	 *            °üº¬ÁË×Ö·û´®Êı¾İÔªËØµÄ×Ö·û´®Êı×é
-	 * @return Ò»¸öÒÔ","Îª·Ö¸ô·ûµÄ×Ö·û´®
+	 *            åŒ…å«äº†å­—ç¬¦ä¸²æ•°æ®å…ƒç´ çš„å­—ç¬¦ä¸²æ•°ç»„
+	 * @return ä¸€ä¸ªä»¥","ä¸ºåˆ†éš”ç¬¦çš„å­—ç¬¦ä¸²
 	 * @see #changeArrayToString
 	 */
 	public static String changeArrayToString(String[] _strArray) {
@@ -119,14 +119,14 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ½«Ò»¸ö×Ö·û´®Êı×éÖĞ±£´æµÄ×Ö·û´®ÔªËØÊ¹ÓÃtoken·Ö¸ô·û×ª»»ÎªÒ»¸ö×Ö·û´®£¬ÕâÊÇpublic static Vector
-	 * changeStringToVector(String str, String token)µÄÄæ²Ù×÷¡£
+	 * å°†ä¸€ä¸ªå­—ç¬¦ä¸²æ•°ç»„ä¸­ä¿å­˜çš„å­—ç¬¦ä¸²å…ƒç´ ä½¿ç”¨tokenåˆ†éš”ç¬¦è½¬æ¢ä¸ºä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œè¿™æ˜¯public static Vector
+	 * changeStringToVector(String str, String token)çš„é€†æ“ä½œã€‚
 	 * 
 	 * @param _strArray
-	 *            °üº¬ÁË×Ö·û´®Êı¾İÔªËØµÄ×Ö·û´®Êı×é
+	 *            åŒ…å«äº†å­—ç¬¦ä¸²æ•°æ®å…ƒç´ çš„å­—ç¬¦ä¸²æ•°ç»„
 	 * @param _token
-	 *            ·Ö¸ô×Ö·û´®Ê¹ÓÃµÄ·Ö¸ô·û¡£
-	 * @return Ò»¸öÒÔtokenÎª·Ö¸ô·ûµÄ×Ö·û´®
+	 *            åˆ†éš”å­—ç¬¦ä¸²ä½¿ç”¨çš„åˆ†éš”ç¬¦ã€‚
+	 * @return ä¸€ä¸ªä»¥tokenä¸ºåˆ†éš”ç¬¦çš„å­—ç¬¦ä¸²
 	 */
 	public static String changeArrayToString(String[] _strArray, String _token) {
 		if (_strArray == null) {
@@ -148,24 +148,24 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ½«Ò»¸öÊ¹ÓÃ","·Ö¸ô·û·Ö¸ôµÄ×Ö·û´®£¬×ª±äÎªÒ»¸ö×Ö·û´®Êı×é¡£
+	 * å°†ä¸€ä¸ªä½¿ç”¨","åˆ†éš”ç¬¦åˆ†éš”çš„å­—ç¬¦ä¸²ï¼Œè½¬å˜ä¸ºä¸€ä¸ªå­—ç¬¦ä¸²æ•°ç»„ã€‚
 	 * 
 	 * @param _str
-	 *            ÓÃtoken·Ö¸ô·û·Ö¸ôµÄ×Ö·û´®
-	 * @return ×Ö·û´®Êı×é
+	 *            ç”¨tokenåˆ†éš”ç¬¦åˆ†éš”çš„å­—ç¬¦ä¸²
+	 * @return å­—ç¬¦ä¸²æ•°ç»„
 	 */
 	public static String[] changeStringToArray(String _str) {
 		return changeStringToArray(_str, ",");
 	}
 
 	/**
-	 * ½«Ò»¸öÊ¹ÓÃtoken·Ö¸ô·û·Ö¸ôµÄ×Ö·û´®£¬×ª±äÎªÒ»¸ö×Ö·û´®Êı×é¡£
+	 * å°†ä¸€ä¸ªä½¿ç”¨tokenåˆ†éš”ç¬¦åˆ†éš”çš„å­—ç¬¦ä¸²ï¼Œè½¬å˜ä¸ºä¸€ä¸ªå­—ç¬¦ä¸²æ•°ç»„ã€‚
 	 * 
 	 * @param _str
-	 *            ÓÃtoken·Ö¸ô·û·Ö¸ôµÄ×Ö·û´®
+	 *            ç”¨tokenåˆ†éš”ç¬¦åˆ†éš”çš„å­—ç¬¦ä¸²
 	 * @param _token
-	 *            ×Ö·û´®µÄ·Ö¸ô·û
-	 * @return ×Ö·û´®Êı×é
+	 *            å­—ç¬¦ä¸²çš„åˆ†éš”ç¬¦
+	 * @return å­—ç¬¦ä¸²æ•°ç»„
 	 */
 	public static String[] changeStringToArray(String _str, String _token) {
 		if (_str == null) {
@@ -182,13 +182,13 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * »ñµÃÒÔ²ÎÊı_fromDateÎª»ùÊıµÄÄêÁä
+	 * è·å¾—ä»¥å‚æ•°_fromDateä¸ºåŸºæ•°çš„å¹´é¾„
 	 * 
 	 * @param _birthday
-	 *            ÉúÈÕ
+	 *            ç”Ÿæ—¥
 	 * @param _fromDate
-	 *            ÆğËãÊ±¼ä
-	 * @return ÄêÁä£¨ÆğËãÄê£­³öÉúÄê£©
+	 *            èµ·ç®—æ—¶é—´
+	 * @return å¹´é¾„ï¼ˆèµ·ç®—å¹´ï¼å‡ºç”Ÿå¹´ï¼‰
 	 */
 	public static int getAgeFromBirthday(java.util.Date _birthday, java.util.Date _fromDate) {
 		Calendar calendar = Calendar.getInstance();
@@ -210,22 +210,22 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * »ñµÃµ±Ç°ÄêÁä
+	 * è·å¾—å½“å‰å¹´é¾„
 	 * 
 	 * @param _birthday
-	 *            ÉúÈÕ
-	 * @return ÄêÁä£¨ÆğËãÄê£­³öÉúÄê£©
+	 *            ç”Ÿæ—¥
+	 * @return å¹´é¾„ï¼ˆèµ·ç®—å¹´ï¼å‡ºç”Ÿå¹´ï¼‰
 	 */
 	public static int getAgeFromBirthday(java.util.Date _birthday) {
 		return getAgeFromBirthday(_birthday, new java.util.Date(System.currentTimeMillis()));
 	}
 
 	/**
-	 * »ñµÃµ±Ç°ÄêÁä
+	 * è·å¾—å½“å‰å¹´é¾„
 	 * 
 	 * @param _birthday
-	 *            ÉúÈÕ
-	 * @return ÄêÁä£¨ÆğËãÄê£­³öÉúÄê£©
+	 *            ç”Ÿæ—¥
+	 * @return å¹´é¾„ï¼ˆèµ·ç®—å¹´ï¼å‡ºç”Ÿå¹´ï¼‰
 	 */
 	public static int getAgeFromBirthday(java.sql.Timestamp _birthday) {
 		return getAgeFromBirthday(new java.util.Date(_birthday.getTime()),
@@ -233,24 +233,24 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * Ê¹ÓÃ¸ñÊ½{@link #DATE_FORMAT_YMD}¸ñÊ½»¯ÈÕÆÚÊä³ö
+	 * ä½¿ç”¨æ ¼å¼{@link #DATE_FORMAT_YMD}æ ¼å¼åŒ–æ—¥æœŸè¾“å‡º
 	 * 
 	 * @param _date
-	 *            ÈÕÆÚ¶ÔÏó
-	 * @return ¸ñÊ½»¯ºóµÄÈÕÆÚ
+	 *            æ—¥æœŸå¯¹è±¡
+	 * @return æ ¼å¼åŒ–åçš„æ—¥æœŸ
 	 */
 	public static String formatDate(java.util.Date _date) {
 		return formatDate(_date, DATE_FORMAT_YMD);
 	}
 
 	/**
-	 * Ê¹ÓÃ¸ñÊ½<b>_pattern</b>¸ñÊ½»¯ÈÕÆÚÊä³ö
+	 * ä½¿ç”¨æ ¼å¼<b>_pattern</b>æ ¼å¼åŒ–æ—¥æœŸè¾“å‡º
 	 * 
 	 * @param _date
-	 *            ÈÕÆÚ¶ÔÏó
+	 *            æ—¥æœŸå¯¹è±¡
 	 * @param _pattern
-	 *            ÈÕÆÚ¸ñÊ½
-	 * @return ¸ñÊ½»¯ºóµÄÈÕÆÚ
+	 *            æ—¥æœŸæ ¼å¼
+	 * @return æ ¼å¼åŒ–åçš„æ—¥æœŸ
 	 */
 	public static String formatDate(java.util.Date _date, String _pattern) {
 		if (_date == null) {
@@ -262,11 +262,11 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * Ê¹ÓÃÖĞÎÄ×Ö·ûÒÔ¼òµ¥µÄĞÎÊ½£¨"Äê ÔÂ ÈÕ"£©¸ñÊ½»¯Ê±¼ä´®
+	 * ä½¿ç”¨ä¸­æ–‡å­—ç¬¦ä»¥ç®€å•çš„å½¢å¼ï¼ˆ"å¹´ æœˆ æ—¥"ï¼‰æ ¼å¼åŒ–æ—¶é—´ä¸²
 	 * 
 	 * @param _date
-	 *            ÈÕÆÚ¶ÔÏó
-	 * @return ¸ñÊ½»¯ºóµÄÈÕÆÚ
+	 *            æ—¥æœŸå¯¹è±¡
+	 * @return æ ¼å¼åŒ–åçš„æ—¥æœŸ
 	 */
 	public static String simplefFormatChineseDate(java.util.Date _date) {
 		if (_date == null) {
@@ -275,18 +275,18 @@ public class ChangeUtil {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(_date);
 		StringBuffer sb = new StringBuffer();
-		sb.append(calendar.get(Calendar.YEAR)).append("Äê").append(calendar.get(Calendar.MONTH) + 1).append("ÔÂ")
-				.append(Calendar.DAY_OF_MONTH).append("ÈÕ");
+		sb.append(calendar.get(Calendar.YEAR)).append("å¹´").append(calendar.get(Calendar.MONTH) + 1).append("æœˆ")
+				.append(Calendar.DAY_OF_MONTH).append("æ—¥");
 		calendar.clear();
 		return sb.toString();
 	}
 
 	/**
-	 * Ê¹ÓÃÖĞÎÄ×Ö·ûÒÔ¸´ÔÓµÄĞÎÊ½£¨"Äê ÔÂ ÈÕ ÉÏÎç Ê± ·Ö Ãë"£©¸ñÊ½»¯Ê±¼ä´®
+	 * ä½¿ç”¨ä¸­æ–‡å­—ç¬¦ä»¥å¤æ‚çš„å½¢å¼ï¼ˆ"å¹´ æœˆ æ—¥ ä¸Šåˆ æ—¶ åˆ† ç§’"ï¼‰æ ¼å¼åŒ–æ—¶é—´ä¸²
 	 * 
 	 * @param _date
-	 *            ÈÕÆÚ¶ÔÏó
-	 * @return ¸ñÊ½»¯ºóµÄÈÕÆÚ
+	 *            æ—¥æœŸå¯¹è±¡
+	 * @return æ ¼å¼åŒ–åçš„æ—¥æœŸ
 	 */
 	public static String complexFormatChineseDate(java.util.Date _date) {
 		if (_date == null) {
@@ -295,34 +295,34 @@ public class ChangeUtil {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(_date);
 		StringBuffer sb = new StringBuffer();
-		sb.append(calendar.get(Calendar.YEAR)).append("Äê").append(calendar.get(Calendar.MONTH) + 1).append("ÔÂ")
-				.append(Calendar.DAY_OF_MONTH).append("ÈÕ").append(Calendar.HOUR_OF_DAY).append("Ê±")
-				.append(Calendar.MINUTE).append("·Ö").append(Calendar.SECOND).append("Ãë");
+		sb.append(calendar.get(Calendar.YEAR)).append("å¹´").append(calendar.get(Calendar.MONTH) + 1).append("æœˆ")
+				.append(Calendar.DAY_OF_MONTH).append("æ—¥").append(Calendar.HOUR_OF_DAY).append("æ—¶")
+				.append(Calendar.MINUTE).append("åˆ†").append(Calendar.SECOND).append("ç§’");
 		calendar.clear();
 		return sb.toString();
 	}
 
 	/**
-	 * ½«Ê±¼ä´®×ª±äÎªÊ±¼ä¶ÔÏó£¬ÊäÈë²ÎÊı<b>_dateStr</b>±ØĞë×ñÑ­¸ñÊ½{@link #DATE_FORMAT_YMD}
+	 * å°†æ—¶é—´ä¸²è½¬å˜ä¸ºæ—¶é—´å¯¹è±¡ï¼Œè¾“å…¥å‚æ•°<b>_dateStr</b>å¿…é¡»éµå¾ªæ ¼å¼{@link #DATE_FORMAT_YMD}
 	 * 
 	 * @param _dateStr
-	 *            Ê±¼ä´®
-	 * @return Ê±¼ä¶ÔÏó
+	 *            æ—¶é—´ä¸²
+	 * @return æ—¶é—´å¯¹è±¡
 	 */
 	public static java.util.Date changeToDate(String _dateStr) throws IllegalArgumentException {
 		return changeToDate(_dateStr, DATE_FORMAT_YMD);
 	}
 
 	/**
-	 * ½«Ê±¼ä´®×ª±äÎªÊ±¼ä¶ÔÏó
+	 * å°†æ—¶é—´ä¸²è½¬å˜ä¸ºæ—¶é—´å¯¹è±¡
 	 * 
 	 * @param _dateStr
-	 *            Ê±¼ä´®
+	 *            æ—¶é—´ä¸²
 	 * @param _pattern
-	 *            Ê±¼ä´®Ê¹ÓÃµÄÄ£Ê½
-	 * @return Ê±¼ä¶ÔÏó
+	 *            æ—¶é—´ä¸²ä½¿ç”¨çš„æ¨¡å¼
+	 * @return æ—¶é—´å¯¹è±¡
 	 * @throws ParamValidateException
-	 *             µ±ÊäÈëµÄÊ±¼ä´®ºÍËüÊ¹ÓÃµÄÄ£Ê½²»Æ¥ÅäÊ±ÖÀ³ö
+	 *             å½“è¾“å…¥çš„æ—¶é—´ä¸²å’Œå®ƒä½¿ç”¨çš„æ¨¡å¼ä¸åŒ¹é…æ—¶æ·å‡º
 	 */
 	public static java.util.Date changeToDate(String _dateStr, String _pattern) throws IllegalArgumentException {
 		if (_dateStr == null || _dateStr.trim().equals("")) {
@@ -333,43 +333,43 @@ public class ChangeUtil {
 		try {
 			date = format.parse(_dateStr);
 		} catch (java.text.ParseException pe) {
-			throw new IllegalArgumentException("²»ÄÜÊ¹ÓÃÄ£Ê½:[" + _pattern + "]¸ñÊ½»¯Ê±¼ä´®:[" + _dateStr + "]");
+			throw new IllegalArgumentException("ä¸èƒ½ä½¿ç”¨æ¨¡å¼:[" + _pattern + "]æ ¼å¼åŒ–æ—¶é—´ä¸²:[" + _dateStr + "]");
 		}
 		return date;
 	}
 
 	/**
-	 * ½«Ê±¼ä´®×ª±äÎªÊı¾İ¿âÊ±¼ä¶ÔÏó£¬ÊäÈë²ÎÊı<b>_dateStr</b>±ØĞë×ñÑ­¸ñÊ½{@link #DATE_FORMAT_YMD}
+	 * å°†æ—¶é—´ä¸²è½¬å˜ä¸ºæ•°æ®åº“æ—¶é—´å¯¹è±¡ï¼Œè¾“å…¥å‚æ•°<b>_dateStr</b>å¿…é¡»éµå¾ªæ ¼å¼{@link #DATE_FORMAT_YMD}
 	 * 
 	 * @param _dateStr
-	 *            Ê±¼ä´®
-	 * @return Êı¾İ¿âÊ±¼ä¶ÔÏó
+	 *            æ—¶é—´ä¸²
+	 * @return æ•°æ®åº“æ—¶é—´å¯¹è±¡
 	 */
 	public static java.sql.Date changeToDBDate(String _dateStr) throws IllegalArgumentException {
 		return changeForDBDate(changeToDate(_dateStr, DATE_FORMAT_YMD));
 	}
 
 	/**
-	 * ½«Ê±¼ä´®×ª±äÎªÊı¾İ¿âÊ±¼ä¶ÔÏó
+	 * å°†æ—¶é—´ä¸²è½¬å˜ä¸ºæ•°æ®åº“æ—¶é—´å¯¹è±¡
 	 * 
 	 * @param _dateStr
-	 *            Ê±¼ä´®
+	 *            æ—¶é—´ä¸²
 	 * @param _pattern
-	 *            Ê±¼ä´®Ê¹ÓÃµÄÄ£Ê½
-	 * @return Ê±¼ä¶ÔÏó
+	 *            æ—¶é—´ä¸²ä½¿ç”¨çš„æ¨¡å¼
+	 * @return æ—¶é—´å¯¹è±¡
 	 * @throws ParamValidateException
-	 *             µ±ÊäÈëµÄÊ±¼ä´®ºÍËüÊ¹ÓÃµÄÄ£Ê½²»Æ¥ÅäÊ±ÖÀ³ö
+	 *             å½“è¾“å…¥çš„æ—¶é—´ä¸²å’Œå®ƒä½¿ç”¨çš„æ¨¡å¼ä¸åŒ¹é…æ—¶æ·å‡º
 	 */
 	public static java.sql.Date changeToDBDate(String _dateStr, String _pattern) throws IllegalArgumentException {
 		return changeForDBDate(changeToDate(_dateStr, _pattern));
 	}
 
 	/**
-	 * ½«java.util.Date¶ÔÏó×ª»»Îªjava.sql.Date¶ÔÏó
+	 * å°†java.util.Dateå¯¹è±¡è½¬æ¢ä¸ºjava.sql.Dateå¯¹è±¡
 	 * 
 	 * @param _date
-	 *            ´ı×ª»¯µÄjava.util.Date ¶ÔÏó
-	 * @return java.sql.Date¶ÔÏó
+	 *            å¾…è½¬åŒ–çš„java.util.Date å¯¹è±¡
+	 * @return java.sql.Dateå¯¹è±¡
 	 */
 	public static java.sql.Date changeForDBDate(java.util.Date _date) {
 		if (_date == null) {
@@ -379,22 +379,22 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ½«java.sql.Date¶ÔÏó×ª»»Îªjava.util.Date¶ÔÏó
+	 * å°†java.sql.Dateå¯¹è±¡è½¬æ¢ä¸ºjava.util.Dateå¯¹è±¡
 	 * 
 	 * @param _date
-	 *            ´ı×ª»¯µÄjava.sql.Date¶ÔÏó
-	 * @return java.util.Date¶ÔÏó
+	 *            å¾…è½¬åŒ–çš„java.sql.Dateå¯¹è±¡
+	 * @return java.util.Dateå¯¹è±¡
 	 */
 	public static java.util.Date changFromDBDate(java.sql.Date _date) {
 		return (java.util.Date) _date;
 	}
 
 	/**
-	 * ½«java.util.Date¶ÔÏó×ª»»Îªjava.sql.Timestamp¶ÔÏó
+	 * å°†java.util.Dateå¯¹è±¡è½¬æ¢ä¸ºjava.sql.Timestampå¯¹è±¡
 	 * 
 	 * @param _date
-	 *            ´ı×ª»¯µÄjava.util.Date ¶ÔÏó
-	 * @return java.sql.Timestamp¶ÔÏó
+	 *            å¾…è½¬åŒ–çš„java.util.Date å¯¹è±¡
+	 * @return java.sql.Timestampå¯¹è±¡
 	 */
 	public static java.sql.Timestamp changeToTimestamp(java.util.Date _date) {
 		if (_date == null) {
@@ -404,22 +404,22 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ½«java.sql.Timestamp¶ÔÏó×ª»»Îªjava.util.Date¶ÔÏó
+	 * å°†java.sql.Timestampå¯¹è±¡è½¬æ¢ä¸ºjava.util.Dateå¯¹è±¡
 	 * 
 	 * @param _date
-	 *            ´ı×ª»¯µÄjava.sql.Timestamp ¶ÔÏó
-	 * @return java.util.Date ¶ÔÏó
+	 *            å¾…è½¬åŒ–çš„java.sql.Timestamp å¯¹è±¡
+	 * @return java.util.Date å¯¹è±¡
 	 */
 	public static java.util.Date changeFromTimestamp(java.sql.Timestamp _date) {
 		return (java.util.Date) _date;
 	}
 
 	/**
-	 * ¸Ä±ä×Ö·û´®µÄ±àÂë·½Ê½(ISO8859_1)Îª(GBK)£¬ÒÔÖ§³ÖÖĞÎÄ
+	 * æ”¹å˜å­—ç¬¦ä¸²çš„ç¼–ç æ–¹å¼(ISO8859_1)ä¸º(GBK)ï¼Œä»¥æ”¯æŒä¸­æ–‡
 	 * 
 	 * @param _str
-	 *            ´ı×ª±äµÄ×Ö·û´®
-	 * @return ²ÉÓÃGBK±àÂëµÄ×Ö·û´®
+	 *            å¾…è½¬å˜çš„å­—ç¬¦ä¸²
+	 * @return é‡‡ç”¨GBKç¼–ç çš„å­—ç¬¦ä¸²
 	 */
 	public static String changeToGB(String _str) throws Exception {
 		if (_str == null) {
@@ -435,11 +435,11 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ¸Ä±ä×Ö·û´®µÄ±àÂë·½Ê½(GBK)Îª(ISO8859_1)
+	 * æ”¹å˜å­—ç¬¦ä¸²çš„ç¼–ç æ–¹å¼(GBK)ä¸º(ISO8859_1)
 	 * 
 	 * @param _str
-	 *            ´ı×ª±äµÄ×Ö·û´®
-	 * @return ²ÉÓÃISO8859_1±àÂëµÄ×Ö·û´®
+	 *            å¾…è½¬å˜çš„å­—ç¬¦ä¸²
+	 * @return é‡‡ç”¨ISO8859_1ç¼–ç çš„å­—ç¬¦ä¸²
 	 */
 	public static String changeFromGB(String _str) throws Exception {
 		if (_str == null) {
@@ -455,11 +455,11 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * »ñµÃÈÕÆÚµÄÄê
+	 * è·å¾—æ—¥æœŸçš„å¹´
 	 * 
 	 * @param _date
-	 *            ÈÕÆÚ¶ÔÏó
-	 * @return ÈÕÆÚµÄÄê
+	 *            æ—¥æœŸå¯¹è±¡
+	 * @return æ—¥æœŸçš„å¹´
 	 */
 	public static int getYear(java.util.Date _date) {
 
@@ -471,27 +471,27 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * »ñµÃÈÕÆÚµÄÔÂ
+	 * è·å¾—æ—¥æœŸçš„æœˆ
 	 * 
 	 * @param _date
-	 *            ÈÕÆÚ¶ÔÏó
-	 * @return ÈÕÆÚµÄÔÂ
+	 *            æ—¥æœŸå¯¹è±¡
+	 * @return æ—¥æœŸçš„æœˆ
 	 */
 	public static int getMonth(java.util.Date _date) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(_date);
-		// ÒÔ0¿ªÊ¼
+		// ä»¥0å¼€å§‹
 		int month = calendar.get(Calendar.MONTH);
 		calendar.clear();
 		return (month + 1);
 	}
 
 	/**
-	 * »ñµÃÈÕÆÚµÄÌì£¬ÒÔÔÂÎª»ù
+	 * è·å¾—æ—¥æœŸçš„å¤©ï¼Œä»¥æœˆä¸ºåŸº
 	 * 
 	 * @param _date
-	 *            ÈÕÆÚ¶ÔÏó
-	 * @return ÈÕÆÚµÄÌì
+	 *            æ—¥æœŸå¯¹è±¡
+	 * @return æ—¥æœŸçš„å¤©
 	 */
 	public static int getDay(java.util.Date _date) {
 		Calendar calendar = Calendar.getInstance();
@@ -502,11 +502,11 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * »ñµÃÈÕÆÚµÄĞ¡Ê±
+	 * è·å¾—æ—¥æœŸçš„å°æ—¶
 	 * 
 	 * @param _date
-	 *            ÈÕÆÚ¶ÔÏó
-	 * @return ÈÕÆÚµÄĞ¡Ê±
+	 *            æ—¥æœŸå¯¹è±¡
+	 * @return æ—¥æœŸçš„å°æ—¶
 	 */
 	public static int getHours(java.util.Date _date) {
 		Calendar calendar = Calendar.getInstance();
@@ -517,11 +517,11 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * »ñµÃÈÕÆÚµÄ·ÖÖÓ
+	 * è·å¾—æ—¥æœŸçš„åˆ†é’Ÿ
 	 * 
 	 * @param _date
-	 *            ÈÕÆÚ¶ÔÏó
-	 * @return ÈÕÆÚµÄ·ÖÖÓ
+	 *            æ—¥æœŸå¯¹è±¡
+	 * @return æ—¥æœŸçš„åˆ†é’Ÿ
 	 */
 	public static int getMinutes(java.util.Date _date) {
 		Calendar calendar = Calendar.getInstance();
@@ -532,11 +532,11 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * »ñµÃÈÕÆÚµÄĞ¡Ãë
+	 * è·å¾—æ—¥æœŸçš„å°ç§’
 	 * 
 	 * @param _date
-	 *            ÈÕÆÚ¶ÔÏó
-	 * @return ÈÕÆÚµÄÃë
+	 *            æ—¥æœŸå¯¹è±¡
+	 * @return æ—¥æœŸçš„ç§’
 	 */
 	public static int getSeconds(java.util.Date _date) {
 		Calendar calendar = Calendar.getInstance();
@@ -547,14 +547,14 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ¼ÆËãÁ½¸öÈÕÆÚ¼äÏà¸ôµÄÌìÊı
+	 * è®¡ç®—ä¸¤ä¸ªæ—¥æœŸé—´ç›¸éš”çš„å¤©æ•°
 	 * 
 	 * @param _startDate
-	 *            ÆğÊ¼ÈÕÆÚ
+	 *            èµ·å§‹æ—¥æœŸ
 	 * @param _endDate
-	 *            ÖÕÖ¹ÈÕÆÚ
-	 * @return Ïà¸ôÌìÊı,
-	 *         Èç¹û½á¹ûÎªÕı±íÊ¾<b>_endDate</b>ÔÚ<b>_startDate</b>Ö®ºó£»Èç¹û½á¹ûÎª¸º±íÊ¾<b>_endDate</b>ÔÚ<b>_startDate</b>Ö®Ç°£»Èç¹û½á¹ûÎª0±íÊ¾<b>_endDate</b>ºÍ<b>_startDate</b>ÊÇÍ¬Ò»Ìì¡£
+	 *            ç»ˆæ­¢æ—¥æœŸ
+	 * @return ç›¸éš”å¤©æ•°,
+	 *         å¦‚æœç»“æœä¸ºæ­£è¡¨ç¤º<b>_endDate</b>åœ¨<b>_startDate</b>ä¹‹åï¼›å¦‚æœç»“æœä¸ºè´Ÿè¡¨ç¤º<b>_endDate</b>åœ¨<b>_startDate</b>ä¹‹å‰ï¼›å¦‚æœç»“æœä¸º0è¡¨ç¤º<b>_endDate</b>å’Œ<b>_startDate</b>æ˜¯åŒä¸€å¤©ã€‚
 	 */
 	public static int getDayCount(java.util.Date _startDate, java.util.Date _endDate) {
 		Calendar calendar = Calendar.getInstance();
@@ -570,13 +570,13 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * »ñµÃÁ½¸öDate¼äµÄÔÂÊı, ÌìÊı³¬¹ı14ÌìËã1¸öÔÂ
+	 * è·å¾—ä¸¤ä¸ªDateé—´çš„æœˆæ•°, å¤©æ•°è¶…è¿‡14å¤©ç®—1ä¸ªæœˆ
 	 * 
 	 * @param _startDate
-	 *            ¿ªÊ¼Ê±¼ä
+	 *            å¼€å§‹æ—¶é—´
 	 * @param _endDate
-	 *            ½áÊøÊ±¼ä
-	 * @return Á½¸öDate¼äµÄÔÂÊı
+	 *            ç»“æŸæ—¶é—´
+	 * @return ä¸¤ä¸ªDateé—´çš„æœˆæ•°
 	 */
 	public static int getMonthAmount(java.sql.Date _startDate, java.sql.Date _endDate) {
 		int nYear = 0;
@@ -599,11 +599,11 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ¸ñÊ½»¯³¤ÕûĞÎÊı
+	 * æ ¼å¼åŒ–é•¿æ•´å½¢æ•°
 	 * 
 	 * @param _inStrObj
-	 *            ³¤ÕûĞÎ×Ö´®¶ÔÏó
-	 * @return ³¤ÕûĞÎÊı
+	 *            é•¿æ•´å½¢å­—ä¸²å¯¹è±¡
+	 * @return é•¿æ•´å½¢æ•°
 	 */
 	public static long toLong(Object _inStrObj) {
 		if (_inStrObj == null || _inStrObj.toString().trim().equals("")) {
@@ -614,11 +614,11 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ¸ñÊ½»¯ÕûĞÎÊı
+	 * æ ¼å¼åŒ–æ•´å½¢æ•°
 	 * 
 	 * @param _inStrObj
-	 *            ÕûĞÎÊı×Ö´®¶ÔÏó
-	 * @return ÕûĞÎÊı
+	 *            æ•´å½¢æ•°å­—ä¸²å¯¹è±¡
+	 * @return æ•´å½¢æ•°
 	 */
 	public static int toInteger(Object _inStrObj) {
 		if (_inStrObj == null || _inStrObj.toString().trim().equals("")) {
@@ -629,11 +629,11 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ¸ñÊ½»¯Ë«¾«¸¡µãÊı
+	 * æ ¼å¼åŒ–åŒç²¾æµ®ç‚¹æ•°
 	 * 
 	 * @param _inStrObj
-	 *            Ë«¾«¸¡µãÊı×Ö´®¶ÔÏó
-	 * @return Ë«¾«¶È¸¡µãÊı£¬
+	 *            åŒç²¾æµ®ç‚¹æ•°å­—ä¸²å¯¹è±¡
+	 * @return åŒç²¾åº¦æµ®ç‚¹æ•°ï¼Œ
 	 */
 	public static double toDouble(Object _inStrObj) {
 		if (_inStrObj == null || _inStrObj.toString().trim().equals("")) {
@@ -644,11 +644,11 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ¸ñÊ½»¯¸¡µãÊı
+	 * æ ¼å¼åŒ–æµ®ç‚¹æ•°
 	 * 
 	 * @param _inStrObj
-	 *            ¸¡µãÊı×Ö´®¶ÔÏó
-	 * @return ¸¡µãÊı£¬Èç¹ûÊı¾İ¸ñÊ½´íÎó£¬»ò×Ö´®Îª¿Õ£¬Õâ·µ»Ø0
+	 *            æµ®ç‚¹æ•°å­—ä¸²å¯¹è±¡
+	 * @return æµ®ç‚¹æ•°ï¼Œå¦‚æœæ•°æ®æ ¼å¼é”™è¯¯ï¼Œæˆ–å­—ä¸²ä¸ºç©ºï¼Œè¿™è¿”å›0
 	 */
 	public static float toFloat(Object _inStrObj) {
 		if (_inStrObj == null || _inStrObj.toString().trim().equals("")) {
@@ -659,15 +659,15 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ½«×Ö½ÚÊı×é²ÉÓÃ±àÂë<b>_encoding</b>×ª»¯Îª×Ö·û´®
+	 * å°†å­—èŠ‚æ•°ç»„é‡‡ç”¨ç¼–ç <b>_encoding</b>è½¬åŒ–ä¸ºå­—ç¬¦ä¸²
 	 * 
 	 * @param _bytes
-	 *            ×Ö½ÚÊı×é
+	 *            å­—èŠ‚æ•°ç»„
 	 * @param _encoding
-	 *            ±àÂë·½Ê½
+	 *            ç¼–ç æ–¹å¼
 	 * @throws ParamValidateException
-	 *             Èç¹û±àÂë·½Ê½²»Ö§³ÖÊ±ÖÀ³ö
-	 * @return ×Ö·û´®
+	 *             å¦‚æœç¼–ç æ–¹å¼ä¸æ”¯æŒæ—¶æ·å‡º
+	 * @return å­—ç¬¦ä¸²
 	 */
 	public static String toStr(byte[] _bytes, String _encoding) throws IllegalArgumentException {
 		if (_bytes == null) {
@@ -678,17 +678,17 @@ public class ChangeUtil {
 		try {
 			s = new String(_bytes, _encoding);
 		} catch (Exception e) {
-			throw new IllegalArgumentException("²»Ö§³ÖµÄ±àÂë·½Ê½:" + _encoding);
+			throw new IllegalArgumentException("ä¸æ”¯æŒçš„ç¼–ç æ–¹å¼:" + _encoding);
 		}
 		return s;
 	}
 
 	/**
-	 * ¸ñÊ½»¯²¼¶û¶ÔÏó
+	 * æ ¼å¼åŒ–å¸ƒå°”å¯¹è±¡
 	 * 
 	 * @param _boolean
-	 *            ²¼¶û¶ÔÏó
-	 * @return ²¼¶û¶ÔÏóµÄÖµ£¬Èç¹û<b>_boolean</b>Îªnull, ·µ»Øfalse
+	 *            å¸ƒå°”å¯¹è±¡
+	 * @return å¸ƒå°”å¯¹è±¡çš„å€¼ï¼Œå¦‚æœ<b>_boolean</b>ä¸ºnull, è¿”å›false
 	 */
 	public static boolean toBoolean(Boolean _boolean) {
 		if (_boolean == null) {
@@ -699,13 +699,13 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * »ñµÃ¶ÔÏóµÄ×Ö·û´®±íÊ¾£¬ µ±<b>_obj</b>ÎªnullÊ±ÓÃ<b>_replaceStr</b>Ìæ´ú
+	 * è·å¾—å¯¹è±¡çš„å­—ç¬¦ä¸²è¡¨ç¤ºï¼Œ å½“<b>_obj</b>ä¸ºnullæ—¶ç”¨<b>_replaceStr</b>æ›¿ä»£
 	 * 
 	 * @param _obj
-	 *            ¶ÔÏó
+	 *            å¯¹è±¡
 	 * @param _replaceStr
-	 *            Ìæ´únullÖµµÄ×Ö·û´®
-	 * @return ´¦ÀíºóµÄ×Ö·û´®
+	 *            æ›¿ä»£nullå€¼çš„å­—ç¬¦ä¸²
+	 * @return å¤„ç†åçš„å­—ç¬¦ä¸²
 	 */
 	public static String toStr(Object _obj, String _replaceStr) {
 		if (_obj == null) {
@@ -716,13 +716,13 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ×Ö·û´®´¦Àí£¬ µ±<b>_str</b>ÎªnullÊ±ÓÃ<b>_replaceStr</b>Ìæ´ú
+	 * å­—ç¬¦ä¸²å¤„ç†ï¼Œ å½“<b>_str</b>ä¸ºnullæ—¶ç”¨<b>_replaceStr</b>æ›¿ä»£
 	 * 
 	 * @param _str
-	 *            Ô­Ê¼×Ö·û´®
+	 *            åŸå§‹å­—ç¬¦ä¸²
 	 * @param _replaceStr
-	 *            Ìæ´únullÖµµÄ×Ö·û´®
-	 * @return ´¦ÀíºóµÄ×Ö·û´®
+	 *            æ›¿ä»£nullå€¼çš„å­—ç¬¦ä¸²
+	 * @return å¤„ç†åçš„å­—ç¬¦ä¸²
 	 */
 	public static String toStr(String _str, String _replaceStr) {
 		if (_str == null || _str.equals("null")) {
@@ -733,22 +733,22 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ×Ö·û´®´¦Àí£¬ µ±<b>_str</b>ÎªnullÊ±ÓÃ<b>""</b>Ìæ´ú
+	 * å­—ç¬¦ä¸²å¤„ç†ï¼Œ å½“<b>_str</b>ä¸ºnullæ—¶ç”¨<b>""</b>æ›¿ä»£
 	 * 
 	 * @param _str
-	 *            Ô­Ê¼×Ö·û´®
-	 * @return ´¦ÀíºóµÄ×Ö·û´®
+	 *            åŸå§‹å­—ç¬¦ä¸²
+	 * @return å¤„ç†åçš„å­—ç¬¦ä¸²
 	 */
 	public static String toStr(String _str) {
 		return toStr(_str, "");
 	}
 
 	/**
-	 * »ñµÃ¶ÔÏóµÄ×Ö·û´®±íÊ¾£¬ µ±<b>_obj</b>ÎªnullÊ±ÓÃ<b>""</b>Ìæ´ú
+	 * è·å¾—å¯¹è±¡çš„å­—ç¬¦ä¸²è¡¨ç¤ºï¼Œ å½“<b>_obj</b>ä¸ºnullæ—¶ç”¨<b>""</b>æ›¿ä»£
 	 * 
 	 * @param _obj
-	 *            ¶ÔÏó
-	 * @return »ñµÃ¶ÔÏóµÄ×Ö·û´®
+	 *            å¯¹è±¡
+	 * @return è·å¾—å¯¹è±¡çš„å­—ç¬¦ä¸²
 	 */
 	public static String toStr(Object _obj) {
 		if (_obj == null) {
@@ -759,15 +759,15 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ½«×Ö·û´®²ÉÓÃ±àÂë<b>_encoding</b>×ª»¯Îª×Ö½ÚÊı×é
+	 * å°†å­—ç¬¦ä¸²é‡‡ç”¨ç¼–ç <b>_encoding</b>è½¬åŒ–ä¸ºå­—èŠ‚æ•°ç»„
 	 * 
 	 * @param _str
-	 *            ×Ö·û´®
+	 *            å­—ç¬¦ä¸²
 	 * @param _encoding
-	 *            ±àÂë·½Ê½
+	 *            ç¼–ç æ–¹å¼
 	 * @throws ParamValidateException
-	 *             Èç¹û±àÂë·½Ê½²»Ö§³ÖÊ±ÖÀ³ö
-	 * @return ×Ö½ÚÊı×é
+	 *             å¦‚æœç¼–ç æ–¹å¼ä¸æ”¯æŒæ—¶æ·å‡º
+	 * @return å­—èŠ‚æ•°ç»„
 	 */
 	public static byte[] toBytes(String _str, String _encoding) throws IllegalArgumentException {
 		if (_str == null) {
@@ -777,21 +777,21 @@ public class ChangeUtil {
 		try {
 			b = _str.getBytes(_encoding);
 		} catch (Exception e) {
-			throw new IllegalArgumentException("²»Ö§³ÖµÄ±àÂë·½Ê½:" + _encoding);
+			throw new IllegalArgumentException("ä¸æ”¯æŒçš„ç¼–ç æ–¹å¼:" + _encoding);
 		}
 		return b;
 	}
 
 	/**
-	 * ½«Ë«¾«¸¡µãÊı´ú±íµÄ½ğ¶î×ª»¯ÖĞÎÄ´óĞ´ĞÎÊ½
+	 * å°†åŒç²¾æµ®ç‚¹æ•°ä»£è¡¨çš„é‡‘é¢è½¬åŒ–ä¸­æ–‡å¤§å†™å½¢å¼
 	 * 
 	 * @param _dMoney
-	 *            ´ú±íË«¾«¸¡µãÊıµÄ½ğ¶î
-	 * @return ½ğ¶îµÄÖĞÎÄ´óĞ´ĞÎÊ½£¬Èç¹ûÊäÈë²ÎÊı<b>dMoney</b>´óÓÚ10^8»òĞ¡ÓÚ0.01·µ»Ø¿Õ´®¡£
+	 *            ä»£è¡¨åŒç²¾æµ®ç‚¹æ•°çš„é‡‘é¢
+	 * @return é‡‘é¢çš„ä¸­æ–‡å¤§å†™å½¢å¼ï¼Œå¦‚æœè¾“å…¥å‚æ•°<b>dMoney</b>å¤§äº10^8æˆ–å°äº0.01è¿”å›ç©ºä¸²ã€‚
 	 */
 	public static String toChinese(double _dMoney) {
-		String[] strArr = { "Áã", "Ò¼", "·¡", "Èş", "ËÁ", "Îé", "Â½", "Æâ", "°Æ", "¾Á" };
-		String[] strArr1 = { "·Ö", "½Ç", "Ô²", "Ê°", "°Û", "Çª", "Íò", "Ê°", "°Û", "Çª" };
+		String[] strArr = { "é›¶", "å£¹", "è´°", "å", "è‚†", "ä¼", "é™†", "æŸ’", "æŒ", "ç–" };
+		String[] strArr1 = { "åˆ†", "è§’", "åœ†", "æ‹¾", "ä½°", "ä»Ÿ", "ä¸‡", "æ‹¾", "ä½°", "ä»Ÿ" };
 		String[] strArr2 = new String[10];
 		String sRtn = "";
 		int iTmp;
@@ -818,48 +818,48 @@ public class ChangeUtil {
 						bFlag = true;
 					} else {
 						if (i == 3) {
-							sRtn += "Íò";
+							sRtn += "ä¸‡";
 							bFlag = true;
 						} else if (i == 7) {
-							sRtn += "Ô²";
+							sRtn += "åœ†";
 							bFlag = true;
 						} else if (bFlag) {
-							sRtn += "Áã";
+							sRtn += "é›¶";
 							bFlag = false;
 						}
 					}
 				}
-				if (sRtn.startsWith("Íò")) {
+				if (sRtn.startsWith("ä¸‡")) {
 					sRtn = sRtn.substring(1, sRtn.length());
 				}
-				if (sRtn.startsWith("Ô²")) {
+				if (sRtn.startsWith("åœ†")) {
 					sRtn = sRtn.substring(1, sRtn.length());
 				}
-				while (sRtn.startsWith("Áã")) {
+				while (sRtn.startsWith("é›¶")) {
 					sRtn = sRtn.substring(1, sRtn.length());
 				}
-				if (sRtn.lastIndexOf("Áã") == (sRtn.length() - 1)) {
+				if (sRtn.lastIndexOf("é›¶") == (sRtn.length() - 1)) {
 					sRtn = sRtn.substring(0, sRtn.length() - 1);
 				}
-				if (sRtn.startsWith("Ô²")) {
+				if (sRtn.startsWith("åœ†")) {
 					sRtn = sRtn.substring(1, sRtn.length());
 				}
-				iTmp = sRtn.indexOf("Ô²");
+				iTmp = sRtn.indexOf("åœ†");
 				if (iTmp != -1) {
-					if ("Áã".equals(sRtn.substring(iTmp - 1, iTmp))) {
+					if ("é›¶".equals(sRtn.substring(iTmp - 1, iTmp))) {
 						sRtn = sRtn.substring(0, iTmp - 1) + sRtn.substring(iTmp, sRtn.length());
 					}
 				}
-				iTmp = sRtn.indexOf("Íò");
+				iTmp = sRtn.indexOf("ä¸‡");
 				if (iTmp != -1) {
-					if ("Áã".equals(sRtn.substring(iTmp - 1, iTmp))) {
+					if ("é›¶".equals(sRtn.substring(iTmp - 1, iTmp))) {
 						sRtn = sRtn.substring(0, iTmp - 1) + sRtn.substring(iTmp, sRtn.length());
 					}
 				}
-				while (sRtn.startsWith("Áã")) {
+				while (sRtn.startsWith("é›¶")) {
 					sRtn = sRtn.substring(1, sRtn.length());
 				}
-				sRtn += "Õû";
+				sRtn += "æ•´";
 			}
 		} catch (Exception ex) {
 		}
@@ -867,11 +867,11 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ¸ù¾İÊäÈëµÄString·µ»ØBigDecimal£¬»òÕßÈôString·ÇÊı×Ö´®£¬·µ»Ønull
+	 * æ ¹æ®è¾“å…¥çš„Stringè¿”å›BigDecimalï¼Œæˆ–è€…è‹¥Stringéæ•°å­—ä¸²ï¼Œè¿”å›null
 	 * 
 	 * @param _str
-	 *            ´ı×ª»¯µÄ×Ö·û´®
-	 * @return BigDecimal¶ÔÏó
+	 *            å¾…è½¬åŒ–çš„å­—ç¬¦ä¸²
+	 * @return BigDecimalå¯¹è±¡
 	 */
 	public static BigDecimal toBigDecimal(String _str) {
 		BigDecimal bd = null;
@@ -886,11 +886,11 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ¸ù¾İÄê£¬ÔÂ£¬ÈÕ£¬×ª»¯ÎªTimestampÀàĞÍ,±ãÓÚDB²åÈë´¦Àí
+	 * æ ¹æ®å¹´ï¼Œæœˆï¼Œæ—¥ï¼Œè½¬åŒ–ä¸ºTimestampç±»å‹,ä¾¿äºDBæ’å…¥å¤„ç†
 	 * 
 	 * @param _sDate
-	 *            ¸ñÊ½Îª£ºyyyy-mm-dd
-	 * @return TimestampµÄÊ±¼ä¸ñÊ½
+	 *            æ ¼å¼ä¸ºï¼šyyyy-mm-dd
+	 * @return Timestampçš„æ—¶é—´æ ¼å¼
 	 */
 	public static Timestamp toTimestamp(String _sDate) {
 		Timestamp ts = null;
@@ -902,12 +902,12 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * Ìæ»»HtmlÎÄµµÖĞµÄ"&nbsp"Îª" ", "&lt"Îª"<", "&gt"Îª">"£¬"<br>
-	 * "Îª"\r\n"
+	 * æ›¿æ¢Htmlæ–‡æ¡£ä¸­çš„"&nbsp"ä¸º" ", "&lt"ä¸º"<", "&gt"ä¸º">"ï¼Œ"<br>
+	 * "ä¸º"\r\n"
 	 * 
 	 * @param _rawStr
-	 *            Ô­Ê¼HtmlÎÄµµ
-	 * @return Ìæ»»ºóµÄHtmlÎÄµµ
+	 *            åŸå§‹Htmlæ–‡æ¡£
+	 * @return æ›¿æ¢åçš„Htmlæ–‡æ¡£
 	 */
 	public static String changeHtmlStr(String _rawStr) {
 		String str = null;
@@ -923,15 +923,15 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * Ê¹ÓÃĞÂ´®Ìæ»»Ô­ÓĞ×Ö·û´®ÖĞÀÏ´®
+	 * ä½¿ç”¨æ–°ä¸²æ›¿æ¢åŸæœ‰å­—ç¬¦ä¸²ä¸­è€ä¸²
 	 * 
 	 * @param _oldStr
-	 *            ´ıÌæ»»µÄ×Ö·û´®
+	 *            å¾…æ›¿æ¢çš„å­—ç¬¦ä¸²
 	 * @param _newStr
-	 *            ĞÂ×Ö·û´®
+	 *            æ–°å­—ç¬¦ä¸²
 	 * @param _wholeStr
-	 *            Õû¸ö×Ö·û´®
-	 * @return Ìæ»»ºóĞÂ´®
+	 *            æ•´ä¸ªå­—ç¬¦ä¸²
+	 * @return æ›¿æ¢åæ–°ä¸²
 	 */
 	public static String replaceString(String _oldStr, String _newStr, String _wholeStr) {
 		if (_wholeStr == null) {
@@ -954,17 +954,17 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * Èç¹ûÊÇÕıÏòÌæ»»£¬Ê¹ÓÃĞÂ´®Ìæ»»Ô­ÓĞ×Ö·û´®ÖĞµÚÒ»¸öÀÏ´®£»Èç¹ûÊÇÄæÏòÌæ»»£¬Ê¹ÓÃĞÂ´®Ìæ»»Ô­ÓĞ×Ö·û´®ÖĞ×îºóÒ»¸öÀÏ´®
+	 * å¦‚æœæ˜¯æ­£å‘æ›¿æ¢ï¼Œä½¿ç”¨æ–°ä¸²æ›¿æ¢åŸæœ‰å­—ç¬¦ä¸²ä¸­ç¬¬ä¸€ä¸ªè€ä¸²ï¼›å¦‚æœæ˜¯é€†å‘æ›¿æ¢ï¼Œä½¿ç”¨æ–°ä¸²æ›¿æ¢åŸæœ‰å­—ç¬¦ä¸²ä¸­æœ€åä¸€ä¸ªè€ä¸²
 	 * 
 	 * @param _oldStr
-	 *            ´ıÌæ»»µÄ×Ö·û´®
+	 *            å¾…æ›¿æ¢çš„å­—ç¬¦ä¸²
 	 * @param _newStr
-	 *            ĞÂ×Ö·û´®
+	 *            æ–°å­—ç¬¦ä¸²
 	 * @param _wholeStr
-	 *            Õû¸ö×Ö·û´®
+	 *            æ•´ä¸ªå­—ç¬¦ä¸²
 	 * @param _reverse
-	 *            Ìæ»»·½Ïò£¬Èç¹ûÎªfalseÕıÏòÌæ»»£¬·ñÔòÄæÏòÌæ»»
-	 * @return Ìæ»»ºóĞÂ´®
+	 *            æ›¿æ¢æ–¹å‘ï¼Œå¦‚æœä¸ºfalseæ­£å‘æ›¿æ¢ï¼Œå¦åˆ™é€†å‘æ›¿æ¢
+	 * @return æ›¿æ¢åæ–°ä¸²
 	 */
 	public static String replaceFirstString(String _oldStr, String _newStr, String _wholeStr, boolean _reverse) {
 		if (_wholeStr == null) {
@@ -992,11 +992,11 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ½«×Ö·û´®×ª»»ÎªHTMLĞÎÊ½£¬ÒÔ±ãÔÚJavaScriptÖĞÊ¹ÓÃ
+	 * å°†å­—ç¬¦ä¸²è½¬æ¢ä¸ºHTMLå½¢å¼ï¼Œä»¥ä¾¿åœ¨JavaScriptä¸­ä½¿ç”¨
 	 * 
 	 * @param _sourceStr
-	 *            Ô­×Ö·û´®
-	 * @return ×ª»»ºóµÄ×Ö·û´®
+	 *            åŸå­—ç¬¦ä¸²
+	 * @return è½¬æ¢åçš„å­—ç¬¦ä¸²
 	 */
 	public static String changeToHTMLStr(String _sourceStr) {
 		if (_sourceStr == null) {
@@ -1025,13 +1025,13 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * µÃµ½ _value½ØÈ¡Ğ¡Êıµãºó_lenÎ» ÒÔºóµÄÖµ
+	 * å¾—åˆ° _valueæˆªå–å°æ•°ç‚¹å_lenä½ ä»¥åçš„å€¼
 	 * 
 	 * @param _value
-	 *            Ô­Öµ
+	 *            åŸå€¼
 	 * @param _len
-	 *            Ğ¡ÊıµãºóµÄÎ»Êı
-	 * @return ½ØÈ¡ÒÔºóµÄÖµ
+	 *            å°æ•°ç‚¹åçš„ä½æ•°
+	 * @return æˆªå–ä»¥åçš„å€¼
 	 */
 	public static float roundFloat(float _value, int _len) throws IllegalArgumentException {
 		int iLen = _len;
@@ -1042,13 +1042,13 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * »ñµÃfloatµÄ×Ö·û´®±íÊ¾£¬Ê×ÏÈ¶Ô_value°´_len½øĞĞËÄÉáÎåÈë½ØÎ»£¬Èç¹û½ØÎ»ºóĞ¡ÊıµãºóÎ»ÊıĞ¡ÓÚ_len£¬ÔòÊ¹ÓÃ0²¹Æë¡£
+	 * è·å¾—floatçš„å­—ç¬¦ä¸²è¡¨ç¤ºï¼Œé¦–å…ˆå¯¹_valueæŒ‰_lenè¿›è¡Œå››èˆäº”å…¥æˆªä½ï¼Œå¦‚æœæˆªä½åå°æ•°ç‚¹åä½æ•°å°äº_lenï¼Œåˆ™ä½¿ç”¨0è¡¥é½ã€‚
 	 * 
 	 * @param _value
-	 *            Ô­Öµ
+	 *            åŸå€¼
 	 * @param _len
-	 *            Ğ¡ÊıµãºóµÄÎ»Êı
-	 * @return floatµÄ×Ö·û´®
+	 *            å°æ•°ç‚¹åçš„ä½æ•°
+	 * @return floatçš„å­—ç¬¦ä¸²
 	 */
 	public static String formatFloat(float _value, int _len) throws IllegalArgumentException {
 		String fStr = String.valueOf(roundFloat(_value, _len));
@@ -1063,13 +1063,13 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * µÃµ½ _value½ØÈ¡Ğ¡Êıµãºó_lenÎ» ÒÔºóµÄÖµ
+	 * å¾—åˆ° _valueæˆªå–å°æ•°ç‚¹å_lenä½ ä»¥åçš„å€¼
 	 * 
 	 * @param _value
-	 *            Ô­Öµ
+	 *            åŸå€¼
 	 * @param _len
-	 *            Ğ¡ÊıµãºóµÄÎ»Êı
-	 * @return ½ØÈ¡ÒÔºóµÄÖµ
+	 *            å°æ•°ç‚¹åçš„ä½æ•°
+	 * @return æˆªå–ä»¥åçš„å€¼
 	 */
 	public static double roundDouble(double _value, int _len) throws IllegalArgumentException {
 		int iLen = _len;
@@ -1080,13 +1080,13 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * »ñµÃdoubleµÄ×Ö·û´®±íÊ¾£¬Ê×ÏÈ¶Ô_value°´_len½øĞĞËÄÉáÎåÈë½ØÎ»£¬Èç¹û½ØÎ»ºóĞ¡ÊıµãºóÎ»ÊıĞ¡ÓÚ_len£¬ÔòÊ¹ÓÃ0²¹Æë¡£
+	 * è·å¾—doubleçš„å­—ç¬¦ä¸²è¡¨ç¤ºï¼Œé¦–å…ˆå¯¹_valueæŒ‰_lenè¿›è¡Œå››èˆäº”å…¥æˆªä½ï¼Œå¦‚æœæˆªä½åå°æ•°ç‚¹åä½æ•°å°äº_lenï¼Œåˆ™ä½¿ç”¨0è¡¥é½ã€‚
 	 * 
 	 * @param _value
-	 *            Ô­Öµ
+	 *            åŸå€¼
 	 * @param _len
-	 *            Ğ¡ÊıµãºóµÄÎ»Êı
-	 * @return doubleµÄ×Ö·û´®
+	 *            å°æ•°ç‚¹åçš„ä½æ•°
+	 * @return doubleçš„å­—ç¬¦ä¸²
 	 */
 	public static String formatDouble(double _value, int _len) throws IllegalArgumentException {
 		String fStr = String.valueOf(roundDouble(_value, _len));
@@ -1101,21 +1101,21 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * »ñµÃ×Ö·û´®µÄ×ó±ß
+	 * è·å¾—å­—ç¬¦ä¸²çš„å·¦è¾¹
 	 * <p>
 	 * _len
 	 * </p>
-	 * ¸ö×Ö·û´®
+	 * ä¸ªå­—ç¬¦ä¸²
 	 * 
 	 * @param _str
-	 *            ×Ö·û´®
+	 *            å­—ç¬¦ä¸²
 	 * @param _len
-	 *            ³¤¶È
+	 *            é•¿åº¦
 	 * @return
 	 *         <p>
 	 *         _len
 	 *         </p>
-	 *         ¸ö×Ö·û´®
+	 *         ä¸ªå­—ç¬¦ä¸²
 	 */
 	public static String leftString(String _str, int _len) {
 		if (_str == null) {
@@ -1132,21 +1132,21 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * »ñµÃ×Ö·û´®µÄÓÒ±ß
+	 * è·å¾—å­—ç¬¦ä¸²çš„å³è¾¹
 	 * <p>
 	 * _len
 	 * </p>
-	 * ¸ö×Ö·û´®
+	 * ä¸ªå­—ç¬¦ä¸²
 	 * 
 	 * @param _str
-	 *            ×Ö·û´®
+	 *            å­—ç¬¦ä¸²
 	 * @param _len
-	 *            ³¤¶È
-	 * @return ×Ö·û´®µÄÓÒ±ß
+	 *            é•¿åº¦
+	 * @return å­—ç¬¦ä¸²çš„å³è¾¹
 	 *         <p>
 	 *         _len
 	 *         </p>
-	 *         ¸ö×Ö·û´®
+	 *         ä¸ªå­—ç¬¦ä¸²
 	 */
 	public static String rightString(String _str, int _len) {
 		if (_str == null) {
@@ -1163,22 +1163,22 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ÓÒÌî³ä×Ö·û
+	 * å³å¡«å……å­—ç¬¦
 	 * <p>
 	 * _padChar
 	 * </p>
-	 * £¬Ê¹Õû¸ö×Ö·û´®³¤¶ÈÎª
+	 * ï¼Œä½¿æ•´ä¸ªå­—ç¬¦ä¸²é•¿åº¦ä¸º
 	 * <p>
 	 * _size
 	 * </p>
 	 * 
 	 * @param _str
-	 *            Ô­Ê¼×Ö·û´®
+	 *            åŸå§‹å­—ç¬¦ä¸²
 	 * @param _size
-	 *            Ìí³äºó×Ö·ûµÄ×Ü³¤¶È
+	 *            æ·»å……åå­—ç¬¦çš„æ€»é•¿åº¦
 	 * @param _padChar
-	 *            ´ıÌî³ä×Ö·û
-	 * @return ÓÒÌî³äºóµÄ×Ö·û´®£¬Èç:rightPad('hell', 3, '0')=hell;rightPad('hell', 10,
+	 *            å¾…å¡«å……å­—ç¬¦
+	 * @return å³å¡«å……åçš„å­—ç¬¦ä¸²ï¼Œå¦‚:rightPad('hell', 3, '0')=hell;rightPad('hell', 10,
 	 *         '0')=hell000000
 	 */
 	public static String rightPad(String _str, int _size, char _padChar) {
@@ -1193,22 +1193,22 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ×óÌî³ä×Ö·û
+	 * å·¦å¡«å……å­—ç¬¦
 	 * <p>
 	 * _padChar
 	 * </p>
-	 * £¬Ê¹µÃÌî³äºóµÄ×Ö·û´®×Ü³¤Îª
+	 * ï¼Œä½¿å¾—å¡«å……åçš„å­—ç¬¦ä¸²æ€»é•¿ä¸º
 	 * <p>
 	 * _size
 	 * </p>
 	 * 
 	 * @param _str
-	 *            Ô­Ê¼×Ö·û´®
+	 *            åŸå§‹å­—ç¬¦ä¸²
 	 * @param _size
-	 *            Ìí³äºó×Ö·ûµÄ×Ü³¤¶È
+	 *            æ·»å……åå­—ç¬¦çš„æ€»é•¿åº¦
 	 * @param _padChar
-	 *            ´ıÌî³ä×Ö·û
-	 * @return ×óÌî³äºóµÄ×Ö·û´®£¬Èç:leftPad('hell', 10, '0')=000000hell;leftPad('hell', 3,
+	 *            å¾…å¡«å……å­—ç¬¦
+	 * @return å·¦å¡«å……åçš„å­—ç¬¦ä¸²ï¼Œå¦‚:leftPad('hell', 10, '0')=000000hell;leftPad('hell', 3,
 	 *         '0')=hell
 	 */
 	public static String leftPad(String _str, int _size, char _padChar) {
@@ -1223,21 +1223,21 @@ public class ChangeUtil {
 	}
 
 	/**
-	 * ×Ö·û´®
+	 * å­—ç¬¦ä¸²
 	 * <p>
 	 * padChar
 	 * </p>
-	 * ÖØ¸´
+	 * é‡å¤
 	 * <p>
 	 * repeat
 	 * </p>
-	 * Î»
+	 * ä½
 	 * 
 	 * @param _repeat
-	 *            ÖØ¸´´ÎÊı
+	 *            é‡å¤æ¬¡æ•°
 	 * @param _padChar
-	 *            ´ıÖØ¸´×Ö·û
-	 * @return ÖØ¸´ºóµÄ½á¹û×Ö´®£¬Èç:padding(5, 'a')=aaaaa;padding(0, 'a'):""
+	 *            å¾…é‡å¤å­—ç¬¦
+	 * @return é‡å¤åçš„ç»“æœå­—ä¸²ï¼Œå¦‚:padding(5, 'a')=aaaaa;padding(0, 'a'):""
 	 */
 	private static String padding(int _repeat, char _padChar) {
 		String value = "";
@@ -1252,7 +1252,7 @@ public class ChangeUtil {
 
 	private static void checkParamPositive(String _str, int _value) throws IllegalArgumentException {
 		if (_value <= 0) {
-			throw new IllegalArgumentException("²ÎÊı:" + _str + "²»ÄÜĞ¡ÓÚµÈÓÚ0");
+			throw new IllegalArgumentException("å‚æ•°:" + _str + "ä¸èƒ½å°äºç­‰äº0");
 		}
 	}
 

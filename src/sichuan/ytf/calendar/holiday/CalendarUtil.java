@@ -6,12 +6,12 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * ÃèÊö: ÈÕÀú×ª»»¹¤¾ßÀà£ºÒõÀúºÍÑôÀúÈÕÆÚ»¥»»(ÒõÀúÈÕÆÚ·¶Î§19000101~20491229)<br>
+ * æè¿°: æ—¥å†è½¬æ¢å·¥å…·ç±»ï¼šé˜´å†å’Œé˜³å†æ—¥æœŸäº’æ¢(é˜´å†æ—¥æœŸèŒƒå›´19000101~20491229)<br>
  */
 public class CalendarUtil {
 	// private static final Logger logger =
 	// LoggerFactory.getLogger(CalendarUtil.class);
-	// ¼ÆËãÒõÀúÈÕÆÚ²ÎÕÕ1900Äêµ½2049Äê
+	// è®¡ç®—é˜´å†æ—¥æœŸå‚ç…§1900å¹´åˆ°2049å¹´
 	private final static int[] LUNAR_INFO = { 0x04bd8, 0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950, 0x16554, 0x056a0,
 			0x09ad0, 0x055d2, 0x04ae0, 0x0a5b6, 0x0a4d0, 0x0d250, 0x1d255, 0x0b540, 0x0d6a0, 0x0ada2, 0x095b0, 0x14977,
 			0x04970, 0x0a4b0, 0x0b4b5, 0x06a50, 0x06d40, 0x1ab54, 0x02b60, 0x09570, 0x052f2, 0x04970, 0x06566, 0x0d4a0,
@@ -26,21 +26,21 @@ public class CalendarUtil {
 			0x0ea65, 0x0d530, 0x05aa0, 0x076a3, 0x096d0, 0x04bd7, 0x04ad0, 0x0a4d0, 0x1d0b6, 0x0d250, 0x0d520, 0x0dd45,
 			0x0b5a0, 0x056d0, 0x055b2, 0x049b0, 0x0a577, 0x0a4b0, 0x0aa50, 0x1b255, 0x06d20, 0x0ada0 };
 
-	// ÔÊĞíÊäÈëµÄ×îĞ¡Äê·İ
+	// å…è®¸è¾“å…¥çš„æœ€å°å¹´ä»½
 	private final static int MIN_YEAR = 1900;
-	// ÔÊĞíÊäÈëµÄ×î´óÄê·İ
+	// å…è®¸è¾“å…¥çš„æœ€å¤§å¹´ä»½
 	private final static int MAX_YEAR = 2049;
-	// µ±ÄêÊÇ·ñÓĞÈòÔÂ
+	// å½“å¹´æ˜¯å¦æœ‰é—°æœˆ
 	private static boolean isLeapYear;
-	// ÑôÀúÈÕÆÚ¼ÆËãÆğµã
+	// é˜³å†æ—¥æœŸè®¡ç®—èµ·ç‚¹
 	private final static String START_DATE = "19000130";
 
 	/**
-	 * ¼ÆËãÒõÀú {@code year}ÄêÈòÄÄ¸öÔÂ 1-12 , Ã»Èò´«»Ø 0
+	 * è®¡ç®—é˜´å† {@code year}å¹´é—°å“ªä¸ªæœˆ 1-12 , æ²¡é—°ä¼ å› 0
 	 * 
 	 * @param year
-	 *            ÒõÀúÄê
-	 * @return (int)ÔÂ·İ
+	 *            é˜´å†å¹´
+	 * @return (int)æœˆä»½
 	 * @author liu 2015-1-5
 	 */
 	private static int getLeapMonth(int year) {
@@ -48,11 +48,11 @@ public class CalendarUtil {
 	}
 
 	/**
-	 * ¼ÆËãÒõÀú{@code year}ÄêÈòÔÂ¶àÉÙÌì
+	 * è®¡ç®—é˜´å†{@code year}å¹´é—°æœˆå¤šå°‘å¤©
 	 * 
 	 * @param year
-	 *            ÒõÀúÄê
-	 * @return (int)ÌìÊı
+	 *            é˜´å†å¹´
+	 * @return (int)å¤©æ•°
 	 * @author liu 2015-1-5
 	 */
 	private static int getLeapMonthDays(int year) {
@@ -68,21 +68,21 @@ public class CalendarUtil {
 	}
 
 	/**
-	 * ¼ÆËãÒõÀú{@code lunarYeay}Äê{@code month}ÔÂµÄÌìÊı
+	 * è®¡ç®—é˜´å†{@code lunarYeay}å¹´{@code month}æœˆçš„å¤©æ•°
 	 * 
 	 * @param lunarYeay
-	 *            ÒõÀúÄê
+	 *            é˜´å†å¹´
 	 * @param month
-	 *            ÒõÀúÔÂ
-	 * @return (int)¸ÃÔÂÌìÊı
+	 *            é˜´å†æœˆ
+	 * @return (int)è¯¥æœˆå¤©æ•°
 	 * @throws Exception
 	 * @author liu 2015-1-5
 	 */
 	private static int getMonthDays(int lunarYeay, int month) throws Exception {
 		if ((month > 31) || (month < 0)) {
-			throw (new Exception("ÔÂ·İÓĞ´í£¡"));
+			throw (new Exception("æœˆä»½æœ‰é”™ï¼"));
 		}
-		// 0X0FFFF[0000 {1111 1111 1111} 1111]ÖĞ¼ä12Î»´ú±í12¸öÔÂ£¬1Îª´óÔÂ£¬0ÎªĞ¡ÔÂ
+		// 0X0FFFF[0000 {1111 1111 1111} 1111]ä¸­é—´12ä½ä»£è¡¨12ä¸ªæœˆï¼Œ1ä¸ºå¤§æœˆï¼Œ0ä¸ºå°æœˆ
 		int bit = 1 << (16 - month);
 		if (((LUNAR_INFO[lunarYeay - 1900] & 0x0FFFF) & bit) == 0) {
 			return 29;
@@ -92,11 +92,11 @@ public class CalendarUtil {
 	}
 
 	/**
-	 * ¼ÆËãÒõÀú{@code year}ÄêµÄ×ÜÌìÊı
+	 * è®¡ç®—é˜´å†{@code year}å¹´çš„æ€»å¤©æ•°
 	 * 
 	 * @param year
-	 *            ÒõÀúÄê
-	 * @return (int)×ÜÌìÊı
+	 *            é˜´å†å¹´
+	 * @return (int)æ€»å¤©æ•°
 	 * @author liu 2015-1-5
 	 */
 	private static int getYearDays(int year) {
@@ -110,31 +110,31 @@ public class CalendarUtil {
 	}
 
 	/**
-	 * ¼ÆËãÁ½¸öÑôÀúÈÕÆÚÏà²îµÄÌìÊı¡£
+	 * è®¡ç®—ä¸¤ä¸ªé˜³å†æ—¥æœŸç›¸å·®çš„å¤©æ•°ã€‚
 	 * 
 	 * @param startDate
-	 *            ¿ªÊ¼Ê±¼ä
+	 *            å¼€å§‹æ—¶é—´
 	 * @param endDate
-	 *            ½ØÖÁÊ±¼ä
-	 * @return (int)ÌìÊı
+	 *            æˆªè‡³æ—¶é—´
+	 * @return (int)å¤©æ•°
 	 * @author liu 2017-3-2
 	 */
 	private static int daysBetween(Date startDate, Date endDate) {
 		int days = 0;
-		// ½«×ª»»µÄÁ½¸öÊ±¼ä¶ÔÏó×ª»»³ÉCalendar¶ÔÏó
+		// å°†è½¬æ¢çš„ä¸¤ä¸ªæ—¶é—´å¯¹è±¡è½¬æ¢æˆCalendarå¯¹è±¡
 		Calendar can1 = Calendar.getInstance();
 		can1.setTime(startDate);
 		Calendar can2 = Calendar.getInstance();
 		can2.setTime(endDate);
-		// ÄÃ³öÁ½¸öÄê·İ
+		// æ‹¿å‡ºä¸¤ä¸ªå¹´ä»½
 		int year1 = can1.get(Calendar.YEAR);
 		int year2 = can2.get(Calendar.YEAR);
-		// ÌìÊı
+		// å¤©æ•°
 
 		Calendar can = null;
-		// Èç¹ûcan1 < can2
-		// ¼õÈ¥Ğ¡µÄÊ±¼äÔÚÕâÒ»ÄêÒÑ¾­¹ıÁËµÄÌìÊı
-		// ¼ÓÉÏ´óµÄÊ±¼äÒÑ¹ıµÄÌìÊı
+		// å¦‚æœcan1 < can2
+		// å‡å»å°çš„æ—¶é—´åœ¨è¿™ä¸€å¹´å·²ç»è¿‡äº†çš„å¤©æ•°
+		// åŠ ä¸Šå¤§çš„æ—¶é—´å·²è¿‡çš„å¤©æ•°
 		if (can1.before(can2)) {
 			days -= can1.get(Calendar.DAY_OF_YEAR);
 			days += can2.get(Calendar.DAY_OF_YEAR);
@@ -145,53 +145,53 @@ public class CalendarUtil {
 			can = can2;
 		}
 		for (int i = 0; i < Math.abs(year2 - year1); i++) {
-			// »ñÈ¡Ğ¡µÄÊ±¼äµ±Ç°ÄêµÄ×ÜÌìÊı
+			// è·å–å°çš„æ—¶é—´å½“å‰å¹´çš„æ€»å¤©æ•°
 			days += can.getActualMaximum(Calendar.DAY_OF_YEAR);
-			// ÔÙ¼ÆËãÏÂÒ»Äê¡£
+			// å†è®¡ç®—ä¸‹ä¸€å¹´ã€‚
 			can.add(Calendar.YEAR, 1);
 		}
 		return days;
 	}
 
 	/**
-	 * ¼ì²éÒõÀúÈÕÆÚÊÇ·ñºÏ·¨
+	 * æ£€æŸ¥é˜´å†æ—¥æœŸæ˜¯å¦åˆæ³•
 	 * 
 	 * @param lunarYear
-	 *            ÒõÀúÄê
+	 *            é˜´å†å¹´
 	 * @param lunarMonth
-	 *            ÒõÀúÔÂ
+	 *            é˜´å†æœˆ
 	 * @param lunarDay
-	 *            ÒõÀúÈÕ
+	 *            é˜´å†æ—¥
 	 * @param leapMonthFlag
-	 *            ÈòÔÂ±êÖ¾
+	 *            é—°æœˆæ ‡å¿—
 	 * @throws Exception
 	 */
 	private static void checkLunarDate(int lunarYear, int lunarMonth, int lunarDay, boolean leapMonthFlag)
 			throws Exception {
 		if ((lunarYear < MIN_YEAR) || (lunarYear > MAX_YEAR)) {
-			throw (new Exception("·Ç·¨Å©ÀúÄê·İ£¡"));
+			throw (new Exception("éæ³•å†œå†å¹´ä»½ï¼"));
 		}
 		if ((lunarMonth < 1) || (lunarMonth > 12)) {
-			throw (new Exception("·Ç·¨Å©ÀúÔÂ·İ£¡"));
+			throw (new Exception("éæ³•å†œå†æœˆä»½ï¼"));
 		}
-		if ((lunarDay < 1) || (lunarDay > 30)) { // ÖĞ¹úµÄÔÂ×î¶à30Ìì
-			throw (new Exception("·Ç·¨Å©ÀúÌìÊı£¡"));
+		if ((lunarDay < 1) || (lunarDay > 30)) { // ä¸­å›½çš„æœˆæœ€å¤š30å¤©
+			throw (new Exception("éæ³•å†œå†å¤©æ•°ï¼"));
 		}
 
-		int leap = getLeapMonth(lunarYear);// ¼ÆËã¸ÃÄêÓ¦¸ÃÈòÄÄ¸öÔÂ
+		int leap = getLeapMonth(lunarYear);// è®¡ç®—è¯¥å¹´åº”è¯¥é—°å“ªä¸ªæœˆ
 		if ((leapMonthFlag == true) && (lunarMonth != leap)) {
-			throw (new Exception("·Ç·¨ÈòÔÂ£¡"));
+			throw (new Exception("éæ³•é—°æœˆï¼"));
 		}
 	}
 
 	/**
-	 * ÒõÀú×ª»»ÎªÑôÀú
+	 * é˜´å†è½¬æ¢ä¸ºé˜³å†
 	 * 
 	 * @param lunarDate
-	 *            ÒõÀúÈÕÆÚ,¸ñÊ½YYYYMMDD
+	 *            é˜´å†æ—¥æœŸ,æ ¼å¼YYYYMMDD
 	 * @param leapMonthFlag
-	 *            ÊÇ·ñÎªÈòÔÂ
-	 * @return ÑôÀúÈÕÆÚ,¸ñÊ½£ºYYYYMMDD
+	 *            æ˜¯å¦ä¸ºé—°æœˆ
+	 * @return é˜³å†æ—¥æœŸ,æ ¼å¼ï¼šYYYYMMDD
 	 * @throws Exception
 	 * @author liu 2015-1-5
 	 */
@@ -205,48 +205,48 @@ public class CalendarUtil {
 		int offset = 0;
 
 		for (int i = MIN_YEAR; i < lunarYear; i++) {
-			int yearDaysCount = getYearDays(i); // ÇóÒõÀúÄ³ÄêÌìÊı
+			int yearDaysCount = getYearDays(i); // æ±‚é˜´å†æŸå¹´å¤©æ•°
 			offset += yearDaysCount;
 		}
-		// ¼ÆËã¸ÃÄêÈò¼¸ÔÂ
+		// è®¡ç®—è¯¥å¹´é—°å‡ æœˆ
 		int leapMonth = getLeapMonth(lunarYear);
 
 		if (leapMonthFlag & leapMonth != lunarMonth) {
-			throw (new Exception("ÄúÊäÈëµÄÈòÔÂ±êÖ¾ÓĞÎó£¡"));
+			throw (new Exception("æ‚¨è¾“å…¥çš„é—°æœˆæ ‡å¿—æœ‰è¯¯ï¼"));
 		}
 
-		// µ±ÄêÃ»ÓĞÈòÔÂ»òÔÂ·İÔçÓÚÈòÔÂ»òºÍÈòÔÂÍ¬ÃûµÄÔÂ·İ
+		// å½“å¹´æ²¡æœ‰é—°æœˆæˆ–æœˆä»½æ—©äºé—°æœˆæˆ–å’Œé—°æœˆåŒåçš„æœˆä»½
 		if (leapMonth == 0 || (lunarMonth < leapMonth) || (lunarMonth == leapMonth && !leapMonthFlag)) {
 			for (int i = 1; i < lunarMonth; i++) {
 				int tempMonthDaysCount = getMonthDays(lunarYear, i);
 				offset += tempMonthDaysCount;
 			}
 
-			// ¼ì²éÈÕÆÚÊÇ·ñ´óÓÚ×î´óÌì
+			// æ£€æŸ¥æ—¥æœŸæ˜¯å¦å¤§äºæœ€å¤§å¤©
 			if (lunarDay > getMonthDays(lunarYear, lunarMonth)) {
-				throw (new Exception("²»ºÏ·¨µÄÅ©ÀúÈÕÆÚ£¡"));
+				throw (new Exception("ä¸åˆæ³•çš„å†œå†æ—¥æœŸï¼"));
 			}
-			offset += lunarDay; // ¼ÓÉÏµ±ÔÂµÄÌìÊı
-		} else {// µ±ÄêÓĞÈòÔÂ£¬ÇÒÔÂ·İÍíÓÚ»òµÈÓÚÈòÔÂ
+			offset += lunarDay; // åŠ ä¸Šå½“æœˆçš„å¤©æ•°
+		} else {// å½“å¹´æœ‰é—°æœˆï¼Œä¸”æœˆä»½æ™šäºæˆ–ç­‰äºé—°æœˆ
 			for (int i = 1; i < lunarMonth; i++) {
 				int tempMonthDaysCount = getMonthDays(lunarYear, i);
 				offset += tempMonthDaysCount;
 			}
 			if (lunarMonth > leapMonth) {
-				int temp = getLeapMonthDays(lunarYear); // ¼ÆËãÈòÔÂÌìÊı
-				offset += temp; // ¼ÓÉÏÈòÔÂÌìÊı
+				int temp = getLeapMonthDays(lunarYear); // è®¡ç®—é—°æœˆå¤©æ•°
+				offset += temp; // åŠ ä¸Šé—°æœˆå¤©æ•°
 
 				if (lunarDay > getMonthDays(lunarYear, lunarMonth)) {
-					throw (new Exception("²»ºÏ·¨µÄÅ©ÀúÈÕÆÚ£¡"));
+					throw (new Exception("ä¸åˆæ³•çš„å†œå†æ—¥æœŸï¼"));
 				}
 				offset += lunarDay;
-			} else { // Èç¹ûĞèÒª¼ÆËãµÄÊÇÈòÔÂ£¬ÔòÓ¦Ê×ÏÈ¼ÓÉÏÓëÈòÔÂ¶ÔÓ¦µÄÆÕÍ¨ÔÂµÄÌìÊı
-				// ¼ÆËãÔÂÎªÈòÔÂ
-				int temp = getMonthDays(lunarYear, lunarMonth); // ¼ÆËã·ÇÈòÔÂÌìÊı
+			} else { // å¦‚æœéœ€è¦è®¡ç®—çš„æ˜¯é—°æœˆï¼Œåˆ™åº”é¦–å…ˆåŠ ä¸Šä¸é—°æœˆå¯¹åº”çš„æ™®é€šæœˆçš„å¤©æ•°
+				// è®¡ç®—æœˆä¸ºé—°æœˆ
+				int temp = getMonthDays(lunarYear, lunarMonth); // è®¡ç®—éé—°æœˆå¤©æ•°
 				offset += temp;
 
 				if (lunarDay > getLeapMonthDays(lunarYear)) {
-					throw (new Exception("²»ºÏ·¨µÄÅ©ÀúÈÕÆÚ£¡"));
+					throw (new Exception("ä¸åˆæ³•çš„å†œå†æ—¥æœŸï¼"));
 				}
 				offset += lunarDay;
 			}
@@ -264,11 +264,11 @@ public class CalendarUtil {
 	}
 
 	/**
-	 * ÑôÀúÈÕÆÚ×ª»»ÎªÒõÀúÈÕÆÚ
+	 * é˜³å†æ—¥æœŸè½¬æ¢ä¸ºé˜´å†æ—¥æœŸ
 	 * 
 	 * @param solarDate
-	 *            ÑôÀúÈÕÆÚ,¸ñÊ½YYYYMMDD
-	 * @return ÒõÀúÈÕÆÚ
+	 *            é˜³å†æ—¥æœŸ,æ ¼å¼YYYYMMDD
+	 * @return é˜´å†æ—¥æœŸ
 	 * @throws Exception
 	 * @author liu 2015-1-5
 	 */
@@ -276,8 +276,8 @@ public class CalendarUtil {
 		int i;
 		int temp = 0;
 		int lunarYear;
-		int lunarMonth; // Å©ÀúÔÂ·İ
-		int lunarDay; // Å©Àúµ±ÔÂµÚ¼¸Ìì
+		int lunarMonth; // å†œå†æœˆä»½
+		int lunarDay; // å†œå†å½“æœˆç¬¬å‡ å¤©
 		boolean leapMonthFlag = false;
 
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
@@ -293,7 +293,7 @@ public class CalendarUtil {
 		int offset = daysBetween(startDate, myDate);
 
 		for (i = MIN_YEAR; i <= MAX_YEAR; i++) {
-			temp = getYearDays(i); // Çóµ±ÄêÅ©ÀúÄêÌìÊı
+			temp = getYearDays(i); // æ±‚å½“å¹´å†œå†å¹´å¤©æ•°
 			if (offset - temp < 1) {
 				break;
 			} else {
@@ -302,8 +302,8 @@ public class CalendarUtil {
 		}
 		lunarYear = i;
 
-		int leapMonth = getLeapMonth(lunarYear);// ¼ÆËã¸ÃÄêÈòÄÄ¸öÔÂ
-		// Éè¶¨µ±ÄêÊÇ·ñÓĞÈòÔÂ
+		int leapMonth = getLeapMonth(lunarYear);// è®¡ç®—è¯¥å¹´é—°å“ªä¸ªæœˆ
+		// è®¾å®šå½“å¹´æ˜¯å¦æœ‰é—°æœˆ
 		if (leapMonth > 0) {
 			isLeapYear = true;
 		} else {
@@ -329,8 +329,8 @@ public class CalendarUtil {
 		lunarMonth = i;
 		lunarDay = offset;
 
-		return "ÒõÀú£º" + lunarYear + "Äê" + (leapMonthFlag & (lunarMonth == leapMonth) ? "Èò" : "") + lunarMonth + "ÔÂ"
-				+ lunarDay + "ÈÕ";
+		return "é˜´å†ï¼š" + lunarYear + "å¹´" + (leapMonthFlag & (lunarMonth == leapMonth) ? "é—°" : "") + lunarMonth + "æœˆ"
+				+ lunarDay + "æ—¥";
 	}
 
 	public static void main(String[] args) throws Exception {
