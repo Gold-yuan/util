@@ -22,7 +22,6 @@ import org.apache.poi.openxml4j.util.ZipSecureFile;
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
@@ -246,6 +245,7 @@ public class CreatAndReadExcel {
 		return file.getAbsolutePath();
 	}
 
+	@SuppressWarnings("deprecation")
 	private static List<List<Object>> read2003And2007Excel(File file)
 			throws IOException {
 
