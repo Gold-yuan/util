@@ -5,7 +5,7 @@
 	<classpathentry kind="lib" path="lib/excel/commons-codec-1.10.jar"/>
 	<classpathentry kind="lib" path="lib/excel/commons-collections4-4.1.jar"/>
 	<classpathentry kind="lib" path="lib/excel/curvesapi-1.04.jar"/>
-	<classpathentry kind="lib" path="lib/excel/poi-3.15.jar"/>
+	<classpathentry kind="lib" path="lib/excel/poi-3.15.jar" sourcepath="C:/Users/IBM_ADMIN/.m2/repository/org/apache/poi/poi/3.15/poi-3.15-sources.jar"/>
 	<classpathentry kind="lib" path="lib/excel/poi-ooxml-3.15.jar"/>
 	<classpathentry kind="lib" path="lib/excel/poi-ooxml-schemas-3.15.jar"/>
 	<classpathentry kind="lib" path="lib/excel/xmlbeans-2.6.0.jar"/>
