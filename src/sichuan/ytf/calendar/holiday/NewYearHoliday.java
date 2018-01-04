@@ -12,9 +12,9 @@ import java.util.Date;
 public class NewYearHoliday {
 
 	public static void main(String[] args) throws Exception {
-//		getSevenDayForNewYear();
+		getSevenDayForNewYear();
 //		beforeHoliday20();
-		afterHoliday30();
+//		afterHoliday30();
 	}
 
 	public static void getSevenDayForNewYear() throws Exception {
@@ -78,11 +78,17 @@ public class NewYearHoliday {
 		for (int i = 0; i < 12; i++) {
 			c.setTime(cal.getTime());
 			c.set(Calendar.MONTH, i);
+			String ym = "";
+			int val = 0;
 			if (i == month) {
-				System.out.println("农历年,全部航线," + sf.format(cal.getTime()) + "," + day);
+				ym = sf.format(cal.getTime());
+				val = day;
 			} else {
-				System.out.println("农历年,全部航线," + sf.format(c.getTime()) + ",0");
+				ym = sf.format(c.getTime());
+				val = 0;
 			}
+			System.out.println("insert into T_TS_IMPACT_FACTOR_HIS values (8,'全部航线','" + ym + "'," + val +",'testuser',sysdate);");
+//			System.out.println(ym+"  "+val);
 		}
 	}
 
@@ -96,20 +102,33 @@ public class NewYearHoliday {
 		c.set(Calendar.MONTH, 0);
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM");
 		for (int i = 0; i < 12; i++) {
+			String ym = "";
+			int val = 0;
 			if (i == monthb) {
-				System.out.println("农历年,全部航线," + sf.format(before.getTime()) + "," + dayb);
+				ym = sf.format(before.getTime());
+				val = dayb;
 			} else if (i == montha) {
-				System.out.println("农历年,全部航线," + sf.format(after.getTime()) + "," + daya);
+				ym = sf.format(after.getTime());
+				val = daya;
 			} else {
-				System.out.println("农历年,全部航线," + sf.format(c.getTime()) + ",0");
+				ym = sf.format(c.getTime());
+				val = 0;
 			}
+			System.out.println("insert into T_TS_IMPACT_FACTOR_HIS values (8,'全部航线','" + ym + "'," + val +",'testuser',sysdate);");
+//			System.out.println(ym+"  "+val);
 			c.add(Calendar.MONTH, 1);
 		}
 	}
 
-	public static void sout(String ym, int val) {
-		System.out.println("农历年前,全部航线," + ym + ","+val);
+	public static void sout20(String ym, int val) {
+//		System.out.println(ym+"  "+val);
+		System.out.println("insert into T_TS_IMPACT_FACTOR_HIS values (9,'全部航线','" + ym + "'," + val +",'testuser',sysdate);");
 	}
+	public static void sout30(String ym, int val) {
+//		System.out.println(ym+"  "+val);
+		System.out.println("insert into T_TS_IMPACT_FACTOR_HIS values (10,'全部航线','" + ym + "'," + val +",'testuser',sysdate);");
+	}
+	
 	/**
 	 * 获取春节前20天时间所在月份
 	 * @throws Exception
@@ -142,9 +161,9 @@ public class NewYearHoliday {
 				for (int j = 0; j < 12; j++) {
 					String month = j<9?"0"+(j+1):""+(j+1);
 					if (j == solarMonth) {
-						sout(year + "-" + month, 20);
+						sout20(year + "-" + month, 20);
 					} else {
-						sout(year + "-" + month, 0);
+						sout20(year + "-" + month, 0);
 					}
 				}
 			}
@@ -160,11 +179,11 @@ public class NewYearHoliday {
 				for (int j = 0; j < 12; j++) {
 					String month = j<9?"0"+(j+1):""+(j+1);
 					if (j == beforeStartMonth) {
-						sout(year + "-" + month, beforeday);
+						sout20(year + "-" + month, beforeday);
 					} else if (j == solarMonth) {
-						sout(year + "-" + month, nowMonthDay);
+						sout20(year + "-" + month, nowMonthDay);
 					} else {
-						sout(year + "-" + month, 0);
+						sout20(year + "-" + month, 0);
 					}
 				}
 			}
@@ -206,9 +225,9 @@ public class NewYearHoliday {
 				for (int j = 0; j < 12; j++) {
 					String month = j < 9 ? "0" + (j + 1) : "" + (j + 1);
 					if (j == lastHolidayMonth) {
-						sout(year + "-" + month, 30);
+						sout30(year + "-" + month, 30);
 					} else {
-						sout(year + "-" + month, 0);
+						sout30(year + "-" + month, 0);
 					}
 				}
 			}
@@ -220,11 +239,11 @@ public class NewYearHoliday {
 				for (int j = 0; j < 12; j++) {
 					String month = j < 9 ? "0" + (j + 1) : "" + (j + 1);
 					if (j == lastHolidayMonth) {
-						sout(year + "-" + month, nowday);
+						sout30(year + "-" + month, nowday);
 					} else if (j == afterStartMonth) {
-						sout(year + "-" + month, afterday);
+						sout30(year + "-" + month, afterday);
 					} else {
-						sout(year + "-" + month, 0);
+						sout30(year + "-" + month, 0);
 					}
 				}
 			}
