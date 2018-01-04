@@ -12,6 +12,12 @@ import java.util.Date;
 public class NewYearHoliday {
 
 	public static void main(String[] args) throws Exception {
+//		getSevenDayForNewYear();
+//		beforeHoliday20();
+		afterHoliday30();
+	}
+
+	public static void getSevenDayForNewYear() throws Exception {
 		int holiday = 7;
 		SimpleDateFormat sf = new SimpleDateFormat("yyyyMMdd");
 		for (int i = 2010; i <= 2049; i++) {
@@ -65,7 +71,6 @@ public class NewYearHoliday {
 			}
 		}
 	}
-
 	public static void sout(Calendar cal, int day) {
 		int month = cal.get(Calendar.MONTH);
 		Calendar c = Calendar.getInstance();
@@ -81,6 +86,7 @@ public class NewYearHoliday {
 		}
 	}
 
+	
 	public static void sout(Calendar before, int dayb, Calendar after, int daya) {
 
 		int monthb = before.get(Calendar.MONTH);
@@ -101,4 +107,145 @@ public class NewYearHoliday {
 		}
 	}
 
+	public static void sout(String ym, int val) {
+		System.out.println("农历年前,全部航线," + ym + ","+val);
+	}
+	/**
+	 * 获取春节前20天时间所在月份
+	 * @throws Exception
+	 */
+	public static void beforeHoliday20() throws Exception {
+
+		SimpleDateFormat sf = new SimpleDateFormat("yyyyMMdd");
+		for (int i = 2010; i <= 2049; i++) {
+			String solarDateStr = CalendarUtil.lunarToSolar(i + "0101", false);
+			Calendar Jan = Calendar.getInstance();
+			Jan.setTime(sf.parse(solarDateStr));
+			Jan.add(Calendar.DAY_OF_MONTH, -1);// 减一天为除夕
+			Date solarDate = Jan.getTime();
+			// System.out.println("除夕"+sf.format(solarDate));
+
+			// 除夕
+			Calendar solarDay = Calendar.getInstance();
+			solarDay.setTime(solarDate);
+			// 除夕前20天
+			Calendar beforeStartDay = Calendar.getInstance();
+			beforeStartDay.setTime(solarDay.getTime());
+			beforeStartDay.add(Calendar.DATE, -20);
+
+			int solarMonth = solarDay.get(Calendar.MONTH);
+			int beforeStartMonth = beforeStartDay.get(Calendar.MONTH);
+			int year = solarDay.get(Calendar.YEAR);
+
+			// 放假前20天都在同一月
+			if (solarMonth == beforeStartMonth) {
+				for (int j = 0; j < 12; j++) {
+					String month = j<9?"0"+(j+1):""+(j+1);
+					if (j == solarMonth) {
+						sout(year + "-" + month, 20);
+					} else {
+						sout(year + "-" + month, 0);
+					}
+				}
+			}
+			// 放假前20天不在同一月
+			else {
+				// 月初
+				Calendar beginOfMonth = Calendar.getInstance();
+				beginOfMonth.setTime(solarDay.getTime());
+				beginOfMonth.set(Calendar.DAY_OF_MONTH, 1);
+				long beforeMillis = beginOfMonth.getTimeInMillis() - beforeStartDay.getTimeInMillis();
+				int beforeday = (int) (beforeMillis / 1000 / 60 / 60 / 24);
+				int nowMonthDay = 20 - beforeday;
+				for (int j = 0; j < 12; j++) {
+					String month = j<9?"0"+(j+1):""+(j+1);
+					if (j == beforeStartMonth) {
+						sout(year + "-" + month, beforeday);
+					} else if (j == solarMonth) {
+						sout(year + "-" + month, nowMonthDay);
+					} else {
+						sout(year + "-" + month, 0);
+					}
+				}
+			}
+		}
+	}
+	/**
+	 * 获取春节后30天时间所在月份
+	 * @throws Exception
+	 */
+	public static void afterHoliday30() throws Exception {
+		int holiday = 7;
+		SimpleDateFormat sf = new SimpleDateFormat("yyyyMMdd");
+		for (int i = 2010; i <= 2049; i++) {
+			String solarDateStr = CalendarUtil.lunarToSolar(i + "0101", false);
+			Calendar Jan = Calendar.getInstance();
+			Jan.setTime(sf.parse(solarDateStr));
+			Jan.add(Calendar.DAY_OF_MONTH, -1);// 减一天为除夕
+			Date solarDate = Jan.getTime();
+			// System.out.println("除夕"+sf.format(solarDate));
+
+			// 除夕
+			Calendar solarDay = Calendar.getInstance();
+			solarDay.setTime(solarDate);
+			// 假日最后一天
+			Calendar lastDay = Calendar.getInstance();
+			lastDay.setTime(solarDate);
+			lastDay.add(Calendar.DATE, holiday-1);
+			// 假日后30天
+			Calendar afterStartDay = Calendar.getInstance();
+			afterStartDay.setTime(lastDay.getTime());
+			afterStartDay.add(Calendar.DATE, 30);
+			
+			int lastHolidayMonth = lastDay.get(Calendar.MONTH);
+			int afterStartMonth = afterStartDay.get(Calendar.MONTH);
+			int year = lastDay.get(Calendar.YEAR);
+
+			// 放假后30天都在同一月
+			if (lastHolidayMonth == afterStartMonth) {
+				for (int j = 0; j < 12; j++) {
+					String month = j < 9 ? "0" + (j + 1) : "" + (j + 1);
+					if (j == lastHolidayMonth) {
+						sout(year + "-" + month, 30);
+					} else {
+						sout(year + "-" + month, 0);
+					}
+				}
+			}
+			// 放假前20天不在同一月
+			else {
+				// 月初
+				int afterday = afterStartDay.get(Calendar.DATE);
+				int nowday = 30 - afterday;
+				for (int j = 0; j < 12; j++) {
+					String month = j < 9 ? "0" + (j + 1) : "" + (j + 1);
+					if (j == lastHolidayMonth) {
+						sout(year + "-" + month, nowday);
+					} else if (j == afterStartMonth) {
+						sout(year + "-" + month, afterday);
+					} else {
+						sout(year + "-" + month, 0);
+					}
+				}
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
