@@ -78,7 +78,7 @@ public class SHAHashUtil {
 
 		for (int i = 0; i < en.length; i++) {
 			String s2 = encrypt("my name is typhoon", en[i]);
-			System.out.println(s2 + " \n" + s2.length() + "位  " + en[i]);
+			System.out.println(s2 + " \n" + s2.length() + "位  " + en[i]+"\n");
 		}
 	}
 }

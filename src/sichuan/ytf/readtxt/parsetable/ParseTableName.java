@@ -18,7 +18,7 @@ import sichuan.ytf.db.util.DataBaseUtil;
 public class ParseTableName {
 	public static void main(String[] args) throws Exception {
 		ParseTableName p = new ParseTableName();
-		Set<String> o = p.getTableName("C:/Users/IBM_ADMIN/Desktop/temp/表.txt");
+		Set<String> o = p.getTableName("表.txt");
 		p.checkTableNameExist(o);
 	}
 	

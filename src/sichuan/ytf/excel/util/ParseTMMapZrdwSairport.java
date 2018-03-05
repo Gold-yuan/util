@@ -40,7 +40,7 @@ public class ParseTMMapZrdwSairport {
 		
 		
 
-		filePath = "C:/Users/IBM_ADMIN/Desktop/temp/1.销售责任单位对应表(国际.xlsx";
+		filePath = "国际.xlsx";
 		pe.setStartCell(0);
 		pe.setStartRow(1);
 		List<Map<String, String>> listNew = pe.parseExcel(filePath, names);
