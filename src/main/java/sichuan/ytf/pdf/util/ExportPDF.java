@@ -19,7 +19,8 @@ import com.itextpdf.text.pdf.PdfPRow;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import Decoder.BASE64Decoder;
+import sichuan.ytf.usual.util.Base64Util;
+
 
 public class ExportPDF {
 
@@ -27,12 +28,11 @@ public class ExportPDF {
 		String[] title = {"预测结果查看", "整体总收入预测结果曲线", "整体可供吨公里变化曲线"};
 		String[] imgPath = new String[imgStrs.length];
 		// 对字节数组字符串进行Base64解码并生成图片
-		BASE64Decoder decoder = new BASE64Decoder();
 		try {
 			for(int j = 0 ; j <imgStrs.length ; j++) {
 				String imgStr = imgStrs[j].substring("data:image/png;base64,".length());
 				// Base64解码
-				byte[] b = decoder.decodeBuffer(imgStr);
+				byte[] b = Base64Util.decodeBuffer(imgStr);
 				for (int i = 0; i < b.length; ++i) {
 					if (b[i] < 0) {// 调整异常数据
 						b[i] += 256;
