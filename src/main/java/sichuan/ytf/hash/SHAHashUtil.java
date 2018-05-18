@@ -1,5 +1,6 @@
 package sichuan.ytf.hash;
 
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -12,8 +13,9 @@ public class SHAHashUtil {
 	 * @param strSrc
 	 *            要加密的字符串
 	 * @return SHA-256 加密算法的字符串
+	 * @throws UnsupportedEncodingException 
 	 */
-	public static String encryptSHA256(String strSrc) {
+	public static String encryptSHA256(String strSrc) throws UnsupportedEncodingException {
 		if (strSrc == null || strSrc.trim().length() == 0) {
 			return null;
 		}
@@ -43,9 +45,10 @@ public class SHAHashUtil {
 	 * @param encName
 	 *            加密类型
 	 * @return
+	 * @throws UnsupportedEncodingException 
 	 */
-	public static String encrypt(String strSrc, String encName) {
-		return encryptSHA256(strSrc.getBytes(), encName);
+	public static String encrypt(String strSrc, String encName) throws UnsupportedEncodingException {
+		return encryptSHA256(strSrc.getBytes("utf-8"), encName);
 	}
 
 	private static String encryptSHA256(byte[] bt, String name) {
@@ -73,7 +76,7 @@ public class SHAHashUtil {
 		return sb.toString();
 	}
 
-	public static void main(String args[]) {
+	public static void main(String args[]) throws Exception {
 		String[] en = { "MD5", "SHA-1", "SHA-224", "SHA-256", "SHA-384", "SHA-512" };
 
 		for (int i = 0; i < en.length; i++) {
