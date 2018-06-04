@@ -1,4 +1,4 @@
-package sichuan.ytf.usual.util;
+package sichuan.ytf.main.util;
 
 import java.io.File;
 import java.io.FileInputStream;

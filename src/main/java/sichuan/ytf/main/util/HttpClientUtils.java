@@ -1,8 +1,9 @@
-package sichuan.ytf.usual.util;
+package sichuan.ytf.main.util;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,22 +33,21 @@ import org.apache.http.util.EntityUtils;
  * 
  * 可发送get post delete put类请求， 参数形式包括url、map、json、file
  * 
- * @author adminytf
  *
  */
-public class HttpClientUtil {
+public class HttpClientUtils {
 	/** 超时时间 */
 	private RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(300000).setConnectTimeout(300000)
 			.setConnectionRequestTimeout(300000).build();
 
-	private static HttpClientUtil instance = null;
+	private static HttpClientUtils instance = null;
 
-	private HttpClientUtil() {
+	private HttpClientUtils() {
 	}
 
-	public static HttpClientUtil getInstance() {
+	public static HttpClientUtils getInstance() {
 		if (instance == null) {
-			instance = new HttpClientUtil();
+			instance = new HttpClientUtils();
 		}
 		return instance;
 	}
@@ -79,7 +79,7 @@ public class HttpClientUtil {
 			response = httpClient.execute(req);
 			entity = response.getEntity();
 			if (entity != null) {
-				responseContent = EntityUtils.toString(entity, "UTF-8");
+				responseContent = EntityUtils.toString(entity, UTF_8);
 			}
 		} catch (IOException e) {
 			throw e;
@@ -106,7 +106,8 @@ public class HttpClientUtil {
 	 *            地址
 	 */
 	public String sendHttpPost(String httpUrl) throws IOException {
-		HttpPost httpPost = new HttpPost(httpUrl);// 创建httpPost
+		// 创建httpPost
+		HttpPost httpPost = new HttpPost(httpUrl);
 		return sendHttpReq(httpPost);
 	}
 
@@ -119,10 +120,11 @@ public class HttpClientUtil {
 	 *            参数(格式:key1=value1&key2=value2)
 	 */
 	public String sendHttpPost(String httpUrl, String params) throws IOException {
-		HttpPost httpPost = new HttpPost(httpUrl);// 创建httpPost
+		// 创建httpPost
+		HttpPost httpPost = new HttpPost(httpUrl);
 		try {
 			// 设置参数
-			StringEntity stringEntity = new StringEntity(params, "UTF-8");
+			StringEntity stringEntity = new StringEntity(params, UTF_8);
 			stringEntity.setContentType("application/x-www-form-urlencoded");
 			httpPost.setEntity(stringEntity);
 		} catch (Exception e) {
@@ -140,10 +142,11 @@ public class HttpClientUtil {
 	 * @return
 	 */
 	public String sendHttpJsonPost(String httpUrl, String json) throws IOException {
-		HttpPost httpPost = new HttpPost(httpUrl);// 创建httpPost
+		// 创建httpPost
+		HttpPost httpPost = new HttpPost(httpUrl);
 		try {
 			// 设置参数
-			StringEntity stringEntity = new StringEntity(json, "UTF-8");
+			StringEntity stringEntity = new StringEntity(json, UTF_8);
 			stringEntity.setContentType("application/json");
 			httpPost.setEntity(stringEntity);
 		} catch (Exception e) {
@@ -161,14 +164,14 @@ public class HttpClientUtil {
 	 *            参数
 	 */
 	public String sendHttpPost(String httpUrl, Map<String, String> maps) throws IOException {
-		HttpPost httpPost = new HttpPost(httpUrl);// 创建httpPost
+		HttpPost httpPost = new HttpPost(httpUrl);
 		// 创建参数队列
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 		for (String key : maps.keySet()) {
 			nameValuePairs.add(new BasicNameValuePair(key, maps.get(key)));
 		}
 		try {
-			httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
+			httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, UTF_8));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -187,7 +190,7 @@ public class HttpClientUtil {
 	 */
 	public String sendHttpFilePost(String httpUrl, Map<String, String> maps, Map<String, File> fileLists)
 			throws IOException {
-		HttpPost httpPost = new HttpPost(httpUrl);// 创建httpPost
+		HttpPost httpPost = new HttpPost(httpUrl);
 		MultipartEntityBuilder meBuilder = MultipartEntityBuilder.create();
 		for (String key : maps.keySet()) {
 			meBuilder.addPart(key, new StringBody(maps.get(key), ContentType.TEXT_PLAIN));
@@ -217,19 +220,23 @@ public class HttpClientUtil {
 		HttpPost httpPost = new HttpPost(postUrl);
 		httpPost.setHeader("Content-Type", "text/xml;charset=UTF-8");
 		httpPost.setHeader("SOAPAction", soapAction);
-		StringEntity data = new StringEntity(soapXml, Charset.forName("UTF-8"));
+		StringEntity data = new StringEntity(soapXml, UTF_8);
 		httpPost.setEntity(data);
 		return sendHttpReq(httpPost);
 	}
 
 	protected String buildSoapRequestData() {
 		StringBuffer soapRequestData = new StringBuffer();
+		// 命名空间如：http://xxx.xxx/xxx
 		soapRequestData.append(
-				"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"webserviceNameSpace\">");// 命名空间如：http://xxx.xxx/xxx
+				"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"webserviceNameSpace\">");
 		soapRequestData.append("<soapenv:Header/>");
 		soapRequestData.append("<soapenv:Body>");
-		soapRequestData.append("<web:methodName>");// 方法名
-		soapRequestData.append("<arg0>这里是参数</arg0>"); // 参数，可多个 arg0 arg1 arg2...
+		// 方法名
+		soapRequestData.append("<web:methodName>");
+		// 参数，可多个 arg0 arg1 arg2...
+		soapRequestData.append("<arg0>这里是参数</arg0>"); 
+														
 		soapRequestData.append(" </web:methodName>");
 		soapRequestData.append("</soapenv:Body>");
 		soapRequestData.append("</soapenv:Envelope>");
@@ -277,7 +284,7 @@ public class HttpClientUtil {
 			nameValuePairs.add(new BasicNameValuePair(key, maps.get(key)));
 		}
 		try {
-			httpPut.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
+			httpPut.setEntity(new UrlEncodedFormEntity(nameValuePairs, UTF_8));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -287,7 +294,7 @@ public class HttpClientUtil {
 	public String sendHttpJsonPut(String httpUrl, String json) throws IOException {
 		HttpPut httpPut = new HttpPut(httpUrl);
 		// 设置参数
-		StringEntity stringEntity = new StringEntity(json, "UTF-8");
+		StringEntity stringEntity = new StringEntity(json, UTF_8);
 		stringEntity.setContentType("application/json");
 		httpPut.setEntity(stringEntity);
 		return sendHttpReq(httpPut);

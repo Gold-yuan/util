@@ -12,6 +12,11 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+/**
+ * 验证码
+ * @author tfyuan
+ *
+ */
 public class CreateImageCode{
 	// 图片的宽度。
 	private int width = 160;

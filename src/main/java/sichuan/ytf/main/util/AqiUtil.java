@@ -1,4 +1,4 @@
-package sichuan.ytf.usual.util;
+package sichuan.ytf.main.util;
 
 public class AqiUtil {
     
