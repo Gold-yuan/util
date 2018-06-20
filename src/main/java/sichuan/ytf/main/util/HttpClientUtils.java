@@ -37,8 +37,8 @@ import org.apache.http.util.EntityUtils;
  */
 public class HttpClientUtils {
 	/** 超时时间 */
-	private RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(300000).setConnectTimeout(300000)
-			.setConnectionRequestTimeout(300000).build();
+	private static RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(60000).setConnectTimeout(60000)
+			.setConnectionRequestTimeout(60000).build();
 
 	private static HttpClientUtils instance = null;
 
@@ -235,8 +235,8 @@ public class HttpClientUtils {
 		// 方法名
 		soapRequestData.append("<web:methodName>");
 		// 参数，可多个 arg0 arg1 arg2...
-		soapRequestData.append("<arg0>这里是参数</arg0>"); 
-														
+		soapRequestData.append("<arg0>这里是参数</arg0>");
+
 		soapRequestData.append(" </web:methodName>");
 		soapRequestData.append("</soapenv:Body>");
 		soapRequestData.append("</soapenv:Envelope>");

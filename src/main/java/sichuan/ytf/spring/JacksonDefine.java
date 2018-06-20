@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
  * @author tfyuan
  *
  */
+@SuppressWarnings("deprecation")
 @Component
 public class JacksonDefine extends WebMvcConfigurerAdapter {
 	@Override
