@@ -62,39 +62,17 @@ public class HttpClientUtils {
 	 *             连接失败
 	 */
 	private String sendHttpReq(HttpRequestBase req) throws IOException {
-		CloseableHttpClient httpClient = null;
-		CloseableHttpResponse response = null;
-		HttpEntity entity = null;
 		String responseContent = "";
 
-		// 创建默认的httpClient实例.
-		httpClient = HttpClients.createDefault();
 		req.setConfig(requestConfig);
-		// 执行请求
-		try {
-			// 创建默认的httpClient实例.
-			httpClient = HttpClients.createDefault();
-			req.setConfig(requestConfig);
-			// 执行请求
-			response = httpClient.execute(req);
-			entity = response.getEntity();
+		try (CloseableHttpClient httpClient = HttpClients.createDefault();
+				CloseableHttpResponse response = httpClient.execute(req);) {
+			HttpEntity entity = response.getEntity();
 			if (entity != null) {
 				responseContent = EntityUtils.toString(entity, UTF_8);
 			}
 		} catch (IOException e) {
 			throw e;
-		} finally {
-			try {
-				// 关闭连接,释放资源
-				if (response != null) {
-					response.close();
-				}
-				if (httpClient != null) {
-					httpClient.close();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 		}
 		return responseContent;
 	}
