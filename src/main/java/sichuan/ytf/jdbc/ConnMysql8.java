@@ -12,7 +12,7 @@ public class ConnMysql8 {
 		Connection conn = DriverManager.getConnection(
 				"jdbc:mysql://9.186.54.96:3306/springboot_test?characterEncoding=utf8", "root", "MySqlPass1!");
 		Statement st = conn.createStatement();
-		ResultSet rs = st.executeQuery("select*from u_user");
+		ResultSet rs = st.executeQuery("select * from u_user");
 		while (rs.next()) {
 			for (int i = 1; i <= 4; i++) {
 				System.out.print(rs.getString(i) + "\t");
