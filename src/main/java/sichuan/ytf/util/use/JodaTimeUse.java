@@ -36,7 +36,7 @@ public class JodaTimeUse {
 		// 方法四：ISO8601形式生成
 		DateTime dt4 = new DateTime("2012-05-20");
 		DateTime dt5 = new DateTime("2012-05-20T13:14:00");
-		
+
 		// 只需要年月日的时候
 		LocalDate localDate = new LocalDate(2009, 9, 6);// September 6, 2009
 

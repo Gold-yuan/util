@@ -4,6 +4,9 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -55,11 +58,9 @@ public class HttpClientUtils {
 	/**
 	 * 发送http、https请求 包括 get post delete put
 	 * 
-	 * @param {@link
-	 * 			HttpRequestBase}
+	 * @param {@link HttpRequestBase}
 	 * @return
-	 * @throws IOException
-	 *             连接失败
+	 * @throws IOException 连接失败
 	 */
 	private String sendHttpReq(HttpRequestBase req) throws IOException {
 		String responseContent = "";
@@ -80,8 +81,7 @@ public class HttpClientUtils {
 	/**
 	 * 发送 post 无参数请求
 	 * 
-	 * @param httpUrl
-	 *            地址
+	 * @param httpUrl 地址
 	 */
 	public String sendHttpPost(String httpUrl) throws IOException {
 		// 创建httpPost
@@ -92,10 +92,8 @@ public class HttpClientUtils {
 	/**
 	 * 发送 post 类get请求
 	 * 
-	 * @param httpUrl
-	 *            地址
-	 * @param params
-	 *            参数(格式:key1=value1&key2=value2)
+	 * @param httpUrl 地址
+	 * @param params  参数(格式:key1=value1&key2=value2)
 	 */
 	public String sendHttpPost(String httpUrl, String params) throws IOException {
 		// 创建httpPost
@@ -114,8 +112,7 @@ public class HttpClientUtils {
 	/**
 	 * 发送 post json请求
 	 * 
-	 * @param httpUrl
-	 *            地址
+	 * @param httpUrl 地址
 	 * @param json
 	 * @return
 	 */
@@ -136,10 +133,8 @@ public class HttpClientUtils {
 	/**
 	 * 发送 post 带参数map请求
 	 * 
-	 * @param httpUrl
-	 *            地址
-	 * @param maps
-	 *            参数
+	 * @param httpUrl 地址
+	 * @param maps    参数
 	 */
 	public String sendHttpPost(String httpUrl, Map<String, String> maps) throws IOException {
 		HttpPost httpPost = new HttpPost(httpUrl);
@@ -159,12 +154,9 @@ public class HttpClientUtils {
 	/**
 	 * 发送 post 带文件请求
 	 * 
-	 * @param httpUrl
-	 *            地址
-	 * @param maps
-	 *            参数
-	 * @param fileLists
-	 *            附件
+	 * @param httpUrl   地址
+	 * @param maps      参数
+	 * @param fileLists 附件
 	 */
 	public String sendHttpFilePost(String httpUrl, Map<String, String> maps, Map<String, File> fileLists)
 			throws IOException {
@@ -186,12 +178,9 @@ public class HttpClientUtils {
 	/**
 	 * 使用SOAP1.1发送消息
 	 * 
-	 * @param postUrl
-	 *            wsdl地址
-	 * @param soapXml
-	 *            请求soapxml
-	 * @param soapAction
-	 *            ""
+	 * @param postUrl    wsdl地址
+	 * @param soapXml    请求soapxml
+	 * @param soapAction ""
 	 * @return
 	 */
 	public String sendHttpSoapPost(String postUrl, String soapXml, String soapAction) throws IOException {
@@ -234,8 +223,7 @@ public class HttpClientUtils {
 	/**
 	 * 发送 Http Delete请求
 	 * 
-	 * @param httpUrl
-	 *            地址
+	 * @param httpUrl 地址
 	 */
 	public String sendHttpDelete(String httpUrl) throws IOException {
 		HttpDelete httpDelete = new HttpDelete(httpUrl);
@@ -276,5 +264,32 @@ public class HttpClientUtils {
 		stringEntity.setContentType("application/json");
 		httpPut.setEntity(stringEntity);
 		return sendHttpReq(httpPut);
+	}
+
+	public InputStream getStreamByGet(String url) throws IOException {
+		try {
+			// 创建url
+			URL realurl = new URL(url);
+			// 打开连接
+			URLConnection connection = realurl.openConnection();
+			// 设置通用的请求属性
+			connection.setRequestProperty("accept", "*/*");
+			connection.setRequestProperty("connection", "Keep-Alive");
+			connection.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+			// 建立连接
+			connection.connect();
+			// 获取所有响应头字段
+//			Map<String, List<String>> map = connection.getHeaderFields();
+			// 遍历所有的响应头字段，获取到cookies等
+//			for (String key : map.keySet()) {
+//				System.out.println(key + "--->" + map.get(key));
+//			}
+//			System.out.println("-------------------------");
+			// 定义 BufferedReader输入流来读取URL的响应
+			InputStream inputStream = connection.getInputStream();
+			return inputStream;
+		} catch (IOException e) {
+			throw e;
+		}
 	}
 }
