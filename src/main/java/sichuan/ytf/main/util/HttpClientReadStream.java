@@ -14,6 +14,7 @@ import org.apache.http.params.HttpParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@SuppressWarnings("deprecation")
 public class HttpClientReadStream {
 	private static Logger log = LoggerFactory.getLogger(HttpClientReadStream.class);
 
@@ -64,7 +65,7 @@ public class HttpClientReadStream {
 
 	}
 
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings({ "unused" })
 	private static class ProxyConnectionManager {
 
 		private final static PoolingClientConnectionManager threadSafeConnectionManager = new PoolingClientConnectionManager();
