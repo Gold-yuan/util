@@ -69,6 +69,7 @@ public class HttpClientUtils {
 			for (String key : header.keySet()) {
 				req.setHeader(key, header.get(key));
 			}
+			header = null;
 		}
 		req.setConfig(requestConfig);
 		try (CloseableHttpClient httpClient = HttpClients.createDefault();
