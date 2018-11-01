@@ -44,6 +44,7 @@ public class HttpClientUtils {
 			.setConnectionRequestTimeout(60000).build();
 
 	private static HttpClientUtils instance = null;
+	private Map<String, String> header = null;
 
 	private HttpClientUtils() {
 	}
@@ -64,7 +65,11 @@ public class HttpClientUtils {
 	 */
 	private String sendHttpReq(HttpRequestBase req) throws IOException {
 		String responseContent = "";
-
+		if (header != null && header.size() > 0) {
+			for (String key : header.keySet()) {
+				req.setHeader(key, header.get(key));
+			}
+		}
 		req.setConfig(requestConfig);
 		try (CloseableHttpClient httpClient = HttpClients.createDefault();
 				CloseableHttpResponse response = httpClient.execute(req);) {
@@ -291,5 +296,13 @@ public class HttpClientUtils {
 		} catch (IOException e) {
 			throw e;
 		}
+	}
+
+	public Map<String, String> getHeader() {
+		return header;
+	}
+
+	public void setHeader(Map<String, String> header) {
+		this.header = header;
 	}
 }
