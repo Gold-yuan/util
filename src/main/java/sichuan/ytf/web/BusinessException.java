@@ -1,24 +1,34 @@
 package sichuan.ytf.web;
 
-/**
- * 业务异常类
- *
- */
-public class BusinessException extends BaseDefineException {
-	private static final long serialVersionUID = -7725705947416795409L;
+public class BusinessException extends BaseException {
+    private static final long serialVersionUID = 1L;
 
-	public BusinessException(ExceptionEnum businessError) {
-		this.exceptionEnum = businessError;
-	}
+    /** 错误信息 */
+    private ExceptionEnum exceptionEnum;
 
-	public BusinessException(int code) {
-		for (ExceptionEnum exceptionEnum : ExceptionEnum.values()) {
-			if (exceptionEnum.getCode() == code) {
-				this.exceptionEnum = exceptionEnum;
-				break;
-			}
-		}
-	}
+    public BusinessException(ExceptionEnum exceptionEnum) {
+        super(exceptionEnum.getErrorCode(), exceptionEnum.getErrorMsg());
+        this.exceptionEnum = exceptionEnum;
+    }
+
+    public BusinessException(String errorCode, String msg) {
+        super(errorCode, msg);
+    }
+
+    public BusinessException(String errorCode, String msg, Throwable throwable) {
+        super(errorCode, msg, throwable);
+    }
+
+    public ExceptionEnum getExceptionEnum() {
+        return exceptionEnum;
+    }
+
+    public void setExceptionEnum(ExceptionEnum exceptionEnum) {
+        this.exceptionEnum = exceptionEnum;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " BusinessException [exceptionEnum=" + exceptionEnum + "]";
+    }
 }
-
-// end

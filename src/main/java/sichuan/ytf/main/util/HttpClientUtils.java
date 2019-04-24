@@ -306,4 +306,10 @@ public class HttpClientUtils {
 	public void setHeader(Map<String, String> header) {
 		this.header = header;
 	}
+	public static void main(String[] args) throws IOException {
+	    String url = "http://wsjs.saic.gov.cn/txnDetail.do?y7bRbp=qmMScTqaddACj3iQ8S.mu1ruM7jcC2wLru3IydBKTTr1CDpfP4p3m8QCId5_EaVhiDVaW4vOpPL2Ty1j3lhGjUzpdeIMoyCxcHSEO.9eGOGEc1GHqy.cjXCR4ULe15yFiYTYhweCanTno7_mwe42tRDhqcy&c1K5tw0w6_=2WtIO7BIr464fz8rW_3M.d.zQTar_DzeX7lLuLCQJRngp6MUe.Ap4l6TKnaQqKtIkbSmbyYCB1oQJLSteL9i9I6EixBozDFCeNLDVxe9z1aqI8iWK3fsUKY0bkhv9h6I_blC0cmRfQSSKR1vBL0jYoepEUbHwx3nA02dyyl8nsHGvTAl691_h7wu.6yMjdsL3XQEpP9ossjFAtL33VOIgnRFQIpVhZlZQnE2ZntSCeBa";
+	    HttpClientUtils c = HttpClientUtils.getInstance();
+	    String resp = c.sendHttpGet(url);
+	    System.out.println(resp);
+    }
 }
