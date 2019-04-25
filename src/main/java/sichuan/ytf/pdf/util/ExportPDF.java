@@ -228,7 +228,7 @@ public class ExportPDF {
             for (int j = 0; j < imgStrs.length; j++) {
                 String imgStr = imgStrs[j].substring("data:image/png;base64,".length());
                 // Base64解码
-                byte[] b = Base64Util.decodeBuffer(imgStr);
+                byte[] b = Base64Util.decode(imgStr);
                 for (int i = 0; i < b.length; ++i) {
                     if (b[i] < 0) {// 调整异常数据
                         b[i] += 256;
