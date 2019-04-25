@@ -189,7 +189,6 @@ public class ChangeCharset {
      */
     public static String decode(String str) {
         String sg = "\\u";
-        int a = 0;
         List<String> list = new ArrayList<>();
         while (str.contains(sg)) {
             str = str.substring(2);
