@@ -77,11 +77,19 @@ public class SHAHashUtil {
 	}
 
 	public static void main(String args[]) throws Exception {
-		String[] en = { "MD5", "SHA-1", "SHA-224", "SHA-256", "SHA-384", "SHA-512" };
-
-		for (int i = 0; i < en.length; i++) {
-			String s2 = encrypt("my name is typhoon", en[i]);
-			System.out.println(s2 + " \n" + s2.length() + "位  " + en[i]+"\n");
-		}
+	    String json = "1";
+	    String encryptSHA256 = encryptSHA256(json);
+	    System.out.println(encryptSHA256);
+	    
+	    json = "2";
+	    encryptSHA256 = encryptSHA256(json);
+	    System.out.println(encryptSHA256);
+	    
+//		String[] en = { "MD5", "SHA-1", "SHA-224", "SHA-256", "SHA-384", "SHA-512" };
+//
+//		for (int i = 0; i < en.length; i++) {
+//			String s2 = encrypt("my name is typhoon", en[i]);
+//			System.out.println(s2 + " \n" + s2.length() + "位  " + en[i]+"\n");
+//		}
 	}
 }

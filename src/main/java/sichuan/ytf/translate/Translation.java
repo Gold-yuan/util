@@ -18,6 +18,12 @@ public class Translation {
     static Map<String, String> map = new HashMap<>();
     private static List<String> unTranslate = new ArrayList<>();
 
+    
+    /**
+     * 修改translation.txt文本的内容，然后执行main方法
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         exec();
     }
