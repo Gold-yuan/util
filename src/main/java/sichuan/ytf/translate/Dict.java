@@ -1,7 +1,6 @@
 package sichuan.ytf.translate;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -9,10 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
-
-import sichuan.ytf.translate.baidu.TransApi;
 
 public class Dict {
     private static Map<String, String> dict = new HashMap<>();
