@@ -25,9 +25,10 @@ public class MD5 {
      * 
      * @param input 输入的字符串
      * @return 输入字符串的MD5值
+     * @throws UnsupportedEncodingException 
      * 
      */
-    public static String md5(String input) {
+    public static String md5(String input) throws UnsupportedEncodingException {
         if (input == null)
             return null;
 
@@ -43,9 +44,6 @@ public class MD5 {
             // 字符数组转换成字符串返回
             return byteArrayToHex(resultByteArray);
         } catch (NoSuchAlgorithmException e) {
-            return null;
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
             return null;
         }
     }

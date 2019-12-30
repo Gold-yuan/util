@@ -7,9 +7,58 @@ import com.google.common.util.concurrent.SimpleTimeLimiter;
 import com.google.common.util.concurrent.TimeLimiter;
 
 public class ThreadTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            for (int i = 0; i < 10; i++) {
+                                System.out.println(i);
+                                Thread.sleep(500);
+                            }
+                        } catch (InterruptedException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            for (int i = 0; i < 10; i++) {
+                                System.out.println(i);
+                                Thread.sleep(500);
+                            }
+                        } catch (InterruptedException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+                System.out.println("sub1");
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("sub2");
+                throw new RuntimeException();
+            }
+        }).start();
+        System.out.println("a");
+        Thread.sleep(1000);
+    }
+
+    public static void test() {
+
         System.out.println("main begin");
-        
+
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -20,17 +69,19 @@ public class ThreadTest {
                     e.printStackTrace();
                 }
                 System.out.println("thread end");
-                
+
             }
+
             @Override
             protected void finalize() throws Throwable {
                 System.out.println("finally");
             }
-            
+
         });
         thread.setDaemon(true);
         thread.start();
         System.out.println("main end");
+
     }
 
     public static void a() {

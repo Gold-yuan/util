@@ -73,7 +73,7 @@ public class Dict {
             String[] split2 = keys.split("、");
             for (String key : split2) {
                 if (dict.containsKey(key)) {
-                    System.out.println("已存在：" + key + " " + value);
+                    //System.out.println("已存在：" + key + " " + value);
                 }
                 dict.put(key, value);
             }

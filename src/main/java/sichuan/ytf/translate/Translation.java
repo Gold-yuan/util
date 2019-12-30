@@ -6,11 +6,17 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import sichuan.ytf.translate.baidu.TransApi;
 
@@ -18,19 +24,37 @@ public class Translation {
     static Map<String, String> map = new HashMap<>();
     private static List<String> unTranslate = new ArrayList<>();
 
-    
     /**
      * 修改translation.txt文本的内容，然后执行main方法
+     * 
      * @param args
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        exec();
+//        exec();
+        checkrepeat();
+    }
+
+    public static void checkrepeat() throws Exception {
+        BufferedReader br = new BufferedReader(
+                new InputStreamReader(Translation.class.getResourceAsStream("translation.txt")));
+        String line = "";
+        Set<String> set = new HashSet<String>();
+        while ((line = br.readLine()) != null) {
+            String[] split = line.split(",");
+            for (String string : split) {
+                if (!set.add(string)) {
+                    System.out.println("重复：" + string);
+                }
+            }
+            set.clear();
+        }
+        System.out.println("完毕");
     }
 
     public static void exec() throws Exception {
         init();
-        
+
         BufferedReader br = new BufferedReader(
                 new InputStreamReader(Translation.class.getResourceAsStream("translation.txt")));
         String line = "";
@@ -42,13 +66,14 @@ public class Translation {
         TransApi api = new TransApi();
         String cn = "";
         String en = "";
-        for (int i = 0; i < unTranslate.size(); i++) {
-            String temp = unTranslate.get(i);
-            if (!StringUtils.isBlank(temp)) {
-                cn += temp + ",";
-                en += getJavaStr(api.getTransEn(temp)) + ",";
-            }
-        }
+//        for (int i = 0; i < unTranslate.size(); i++) {
+//            String temp = unTranslate.get(i);
+//            if (!StringUtils.isBlank(temp)) {
+//                cn += temp + ",";
+//                en += getJavaStr(api.getTransResult(temp, "auto", "en")) + ",";
+//                Thread.sleep(1000);
+//            }
+//        }
         System.out.println("未找到的词：" + cn);
         System.out.println(en);
         System.out.println("cn length" + cn.split(",").length);
@@ -56,17 +81,28 @@ public class Translation {
     }
 
     public static String getJavaStr(String str) {
+        if (StringUtils.isBlank(str)) {
+            return "";
+        }
+        JsonParser jp = new JsonParser();
+        JsonElement parse = jp.parse(str);
+        JsonElement je = parse.getAsJsonObject().get("trans_result");
+        if (je == null) {
+            System.out.println(str);
+            return "";
+        } else {
+            JsonObject asJsonObject = je.getAsJsonArray().get(0).getAsJsonObject();
+            str = asJsonObject.get("dst").toString();
+        }
         String result = "";
         List<String> split = Arrays.asList(str.split(" "));
         for (String s : split) {
             if (StringUtils.isNotBlank(s)) {
-                s = (new StringBuilder()).append(Character.toUpperCase(s.charAt(0))).append(s.substring(1))
-                        .toString();
+                s = (new StringBuilder()).append(Character.toUpperCase(s.charAt(0))).append(s.substring(1)).toString();
                 result += s;
             }
         }
-        result = (new StringBuilder()).append(Character.toLowerCase(result.charAt(0))).append(result.substring(1))
-                .toString();
+        result = result.trim();
         result = result.replace("/", "Or");
         result = result.replace("(", "");
         result = result.replace(")", "");
@@ -74,6 +110,8 @@ public class Translation {
         result = result.replace("?", "");
         result = result.replace("\"", "");
         result = result.replace("-", "");
+        result = (new StringBuilder()).append(Character.toLowerCase(result.charAt(0))).append(result.substring(1))
+                .toString();
         return result;
     }
 
@@ -83,6 +121,7 @@ public class Translation {
             file.createNewFile();
         }
         String en = "";
+        String notFound = "";
         String[] names = cn.split(",");
         for (int i = 0; i < names.length; i++) {
             if (StringUtils.isNotBlank(names[i])) {
@@ -90,6 +129,7 @@ public class Translation {
                 if (nameEn == null || nameEn.length() == 0) {
                     nameEn = "xxxxxxxxxxxxxxxxxx" + names[i];
                     unTranslate.add(names[i]);
+                    notFound += names[i] + ",";
                 }
                 if ((i + 1) == names.length) {
                     en += nameEn + "\n";
@@ -101,7 +141,8 @@ public class Translation {
             }
         }
         FileUtils.write(file, en, java.nio.charset.StandardCharsets.UTF_8, true);
-        System.out.print(en);
+        System.out.println(en);
+        System.out.println("【【【【【" + notFound + "】】】】】");
     }
 
     public static void init() {
@@ -111,14 +152,37 @@ public class Translation {
                 "科室地址,生产（经营）地址,许可证号,日常监督管理人员,许可范围,有效期起,许可证有效性,注册地址,有效期至,许可证类别及科室名称,日常监管人员,企业负责人,投诉举报电话,生产地址,食品类别,地址,有效期止,主体类型,经营者名称,医疗机构类别,日常监督管理机构,许可证编号,分类码,社会信用代码,法定代表人(负责任人),发证机关,医疗机构名称,日常监管机构,生产（经营）范围,备注,经济性质,外设仓库地址,住所,发证日期,主体业态,签发人,质量负责人,经营类别,生产地址和范围,经营场所,行政区域,法定代表人(负责人),企业名称,科室负责人,经营项目,法定代表人,GMP证书,产品名称,负责人,状态说明,生产者名称");
         StringBuffer sbb = new StringBuffer();
         sbb.append(
-                "departmentAddress,productionAddress,licenseNumber,dailySupervisionManagementPersonnel,licenseScope,validityLicenseStart,validityLicense,registrationAddress,expirationDate,licenseCategoryDepartmentName,dailySupervisor,enterprisePersonCharge,complaintReportingTelephone,productionAddress,foodCategory,address,validityLicenseEnd,mainBodyType,operatorName,medicalInstitutionCategory,dailySupervisionManagementOrganization,licenseNumber,classificationCode,socialCreditCode,legalRepresentative,licensingAuthority,medicalInstitutionName,dailySupervisoryAuthority,productionScope,notes,economicNature,externalWarehouseAddress,residence,issuingDate,mainBusinessForm,issuingPersion,qualityPersonCharge,businessCategory,productionAddressScope,businessPlace,administrativeRegion,legalRepresentative,enterpriseName,departmentHead,businessProject,legalRepresentative,GMPCertificate,productName,personCharge,statusDescription,producerName");
+                "departmentAddress,productionAddress,licenseNumber,dailySupervisionManagementPersonnel,licenseScope,validityLicenseStart,validityLicense,registrationAddress,expirationDate,licenseCategoryDepartmentName,dailySupervisor,enterprisePersonCharge,complaintReportingTelephone,productionAddress,foodCategory,address,validityLicenseEnd,mainBodyType,operatorName,medicalInstitutionCategory,dailySupervisionManagementOrganization,licenseNumber,classificationCode,socialCreditCode,legalRepresentative,licensingAuthority,medicalInstitutionName,dailySupervisoryAuthority,productionScope,notes,economicNature,externalWarehouseAddress,residence,issuingDate,mainBusinessForm,issuingPerson,qualityPersonCharge,businessCategory,productionAddressScope,businessPlace,administrativeRegion,legalRepresentative,enterpriseName,departmentHead,businessProject,legalRepresentative,GMPCertificate,productName,personCharge,statusDescription,producerName");
 
         sba.append(",xxxxx");
         sbb.append(",xxxxx");
-        sba.append(",委托加工品名,委托加工单位,相关附件,有效开始日期,委托生产品名,受托生产单位,批件编号,相关附件,有效开始日期,委托生产单位,企业名称（中文）,生产地址（中文）,生产地址（英文）,认证范围（中文）,服务性质,法定代表,旧分类目录生产范围,新分类目录生产范围,许可形式,产品适用范围/预期用途,注册证号状态,证书编号(Certificate NO.),Product(s),Model,产品注册或备案凭证号,Registration certificate(s),Manufacturer,生产企业住所,Address of manufacturer,生产许可或备案凭证号,Manufacturing License(s),证明有效期至,Remark,网络域名,委托方企业名称,委托方生产许可/备案编号,受托方企业名称,受托方生产许可/备案编号,委托合同起始日期,委托合同截至日期,备案者名称,法定代表人或者负责人姓名,食品安全管理机构负责人姓名,增值电信业务经营许可证编号,备案说明,是否体外诊断试剂,2002版生产范围,2017版生产范围,2002版经营范围,2017版经营范围,标准备案号,产品适用范围/预期用途,性能指标,注册证号状态,网络销售类型,互联网药品信息服务资格证书编号,电信业务经营许可证编号,网络经营,食品种类,有效期结束,备案者名称,是否含网络经营,企业注册地,备案者名称,住所(经营场所),法定代表人或者负责人姓名,食品安全管理机构负责人姓名,食品生产许可证或食品经营许可证号,网站备案证明编号,备案说明,标准备案号,产品适用范围/预期用途,性能指标,注册证号状态,许可证有效期,申报单位名称,申报单位地址");
-        sbb.append(",entrustedProcessingProductName,entrustedProcessingUnit,relatedAccessories,effectiveStartDate,entrustedProductName,trusteeProductionUnit,batchNumber,relatedAccessories,effectiveStartDate,entrustedProductionUnit,businessNameChinese,productionAddressChinese,productionAddress,certificationScopeChinese,natureOfService,legalRepresentative,productionScopeOfOldCatalogue,productionScopeOfNewCatalogue,permissibleForm,scopeOfApplicationOrintendedUseOfTheProduct,statusOfRegistrationCertificateNumber,certificateNo,products,model,productRegistrationOrFilingCertificateNumber,registrationCertificates,manufacturer,domicileOfProductionEnterprise,addressOfManufacturer,productionLicenseOrRecordCertificateNumber,manufacturingLicenses,certificateValidUntil,remark,networkDomainName,theNameOfTheClientsEnterprise,productionLicenseOrRecordNumberOfPrincipal,trusteesEnterpriseName,trusteesProductionLicenseOrRecordNumber,startingDateOfCommissionContract,deadlineOfEntrustmentContract,nameOfFiler,nameOfLegalRepresentativeOrPersonInCharge,nameOfPersonInChargeOfFoodSafetyAdministration,valueAddedTelecomBusinessLicenseNumber,recordDescription,isThereAnInVitroDiagnosticReagent,EditionProductionScope2002,productionScopeOf2017Edition,scopeOfBusiness2002Edition,scopeOfBusinessFor2017Edition,standardRecordNumber,scopeOfApplicationOrintendedUseOfTheProduct,performanceIndex,statusOfRegistrationCertificateNumber,typesOfNetworkSales,qualificationCertificateNumberOfInternetDrugInformationService,telecomBusinessLicenseNumber,networkOperation,typesOfFood,endOfValidityPeriod,nameOfFiler,whetherToIncludeNetworkManagement,placeOfBusinessRegistration,nameOfFiler,domicileplaceOfBusiness,nameOfLegalRepresentativeOrPersonInCharge,nameOfPersonInChargeOfFoodSafetyAdministration,foodProductionLicenseOrFoodBusinessLicenseNo,certificateNumberOfWebsiteFiling,recordDescription,standardRecordNumber,scopeOfApplicationOrintendedUseOfTheProduct,performanceIndex,statusOfRegistrationCertificateNumber,licenceValidityPeriod,nameOfDeclaringUnit,addressOfDeclarationUnit");
+        sba.append(",食品名称,食品批准文号");
+        sbb.append(",productName,licenseNumber");
+        sba.append(",备案地点,法人名字,企业负责人名字,负责人职位,机构代码,质量负责人名字,法人职位,成立日期,联系人身份证,质量负责人职位");
+        sbb.append(
+                ",issuingAuthority,legalRepresentative,enterprisePersonCharge,enterprisePersonChargePosition,orgCode,qualityPersonCharge,legalRepresentativePosition,craeteEnterpriseDate,idNo,qualityPersonChargePosition");
+        sba.append(",原广告批准文号,广告时长,医疗器械批准文号,医疗器械名称,广告类型,原广告批准文号有效期至");
+        sbb.append(",oldApproveCode,adDruation,approveCode,productName,adCategory,oldApproveCodeExpirationDate");
+        sba.append(",生产许可证,证书发放日期");
+        sbb.append(",licenseNumber,issuingDate");
+        sba.append(",药品经营（批发）许可证,经营许可证有效期,经营许可证发放日期");
+        sbb.append(",licenseNumber,expirationDate,issuingDate");
+        sba.append(",经营许可证书发放日期,证书发放部门,药品经营（零售）许可证,经营许可证书有效期,GSP证书发放日期");
+        sbb.append(",issuingDate,issuingAuthority,licenseNumber,expirationDate,GSPLicenseNumber");
+        sba.append(",上报部门,机构类型");
+        sbb.append(",reportDepartment,orgCategory");
+        sba.append(",机构类别,有效期限至,所属区域,检查状态,所属单位");
+        sbb.append(",institutionCategory,expirationDate,area,inspectionStatus,unit");
+        sba.append(",证书类型,电信业务许可证编号,*网站域名,企业（申请人）名称,主体类别,证书类型,法人(负责人)");
+        sbb.append(
+                ",certificateType,telecommunicationServiceLicenseNumber,websiteDomainName,nameOfEnterpriseapplicant,subjectCategory,certificateType,legalPersonpersonInCharge");
+        sba.append(
+                ",委托加工品名,委托加工单位,相关附件,有效开始日期,委托生产品名,受托生产单位,批件编号,相关附件,有效开始日期,委托生产单位,企业名称（中文）,生产地址（中文）,生产地址（英文）,认证范围（中文）,服务性质,法定代表,旧分类目录生产范围,新分类目录生产范围,许可形式,产品适用范围/预期用途,注册证号状态,证书编号(Certificate NO.),Product(s),Model,产品注册或备案凭证号,Registration certificate(s),Manufacturer,生产企业住所,Address of manufacturer,生产许可或备案凭证号,Manufacturing License(s),证明有效期至,Remark,网络域名,委托方企业名称,委托方生产许可/备案编号,受托方企业名称,受托方生产许可/备案编号,委托合同起始日期,委托合同截至日期,备案者名称,法定代表人或者负责人姓名,食品安全管理机构负责人姓名,增值电信业务经营许可证编号,备案说明,是否体外诊断试剂,2002版生产范围,2017版生产范围,2002版经营范围,2017版经营范围,标准备案号,产品适用范围/预期用途,性能指标,注册证号状态,网络销售类型,互联网药品信息服务资格证书编号,电信业务经营许可证编号,网络经营,食品种类,有效期结束,备案者名称,是否含网络经营,企业注册地,备案者名称,住所(经营场所),法定代表人或者负责人姓名,食品安全管理机构负责人姓名,食品生产许可证或食品经营许可证号,网站备案证明编号,备案说明,标准备案号,产品适用范围/预期用途,性能指标,注册证号状态,许可证有效期,申报单位名称,申报单位地址");
+        sbb.append(
+                ",entrustedProcessingProductName,entrustedProcessingUnit,relatedAccessories,effectiveStartDate,entrustedProductName,trusteeProductionUnit,batchNumber,relatedAccessories,effectiveStartDate,entrustedProductionUnit,businessNameChinese,productionAddressChinese,productionAddress,certificationScopeChinese,natureOfService,legalRepresentative,productionScopeOfOldCatalogue,productionScopeOfNewCatalogue,permissibleForm,scopeOfApplicationOrintendedUseOfTheProduct,statusOfRegistrationCertificateNumber,certificateNo,products,model,productRegistrationOrFilingCertificateNumber,registrationCertificates,manufacturer,domicileOfProductionEnterprise,addressOfManufacturer,productionLicenseOrRecordCertificateNumber,manufacturingLicenses,certificateValidUntil,remark,networkDomainName,theNameOfTheClientsEnterprise,productionLicenseOrRecordNumberOfPrincipal,trusteesEnterpriseName,trusteesProductionLicenseOrRecordNumber,startingDateOfCommissionContract,deadlineOfEntrustmentContract,nameOfFiler,nameOfLegalRepresentativeOrPersonInCharge,nameOfPersonInChargeOfFoodSafetyAdministration,valueAddedTelecomBusinessLicenseNumber,recordDescription,isThereAnInVitroDiagnosticReagent,EditionProductionScope2002,productionScopeOf2017Edition,scopeOfBusiness2002Edition,scopeOfBusinessFor2017Edition,standardRecordNumber,scopeOfApplicationOrintendedUseOfTheProduct,performanceIndex,statusOfRegistrationCertificateNumber,typesOfNetworkSales,qualificationCertificateNumberOfInternetDrugInformationService,telecomBusinessLicenseNumber,networkOperation,typesOfFood,endOfValidityPeriod,nameOfFiler,whetherToIncludeNetworkManagement,placeOfBusinessRegistration,nameOfFiler,domicileplaceOfBusiness,nameOfLegalRepresentativeOrPersonInCharge,nameOfPersonInChargeOfFoodSafetyAdministration,foodProductionLicenseOrFoodBusinessLicenseNo,certificateNumberOfWebsiteFiling,recordDescription,standardRecordNumber,scopeOfApplicationOrintendedUseOfTheProduct,performanceIndex,statusOfRegistrationCertificateNumber,licenceValidityPeriod,nameOfDeclaringUnit,addressOfDeclarationUnit");
         sba.append(",制剂通用名称,制剂汉语拼音,单位地址,批准文号有效期截止日期,受托加工单位");
-        sbb.append(",preparationGeneralName,preparationChinesePinyin,unitAddress,approvalNumberExpirationDate,trusteeProcessingUnit");
+        sbb.append(
+                ",preparationGeneralName,preparationChinesePinyin,unitAddress,approvalNumberExpirationDate,trusteeProcessingUnit");
         sba.append(",不良反应监测信息,风险控制主要措施");
         sbb.append(",adverseReactionMonitorInformation,riskControlMainMeasures");
         sba.append(",企业法人,制剂许可证证号,有效期开始日期,有效期截止日期");
@@ -154,7 +218,7 @@ public class Translation {
         sbb.append(",registeredTrademark,approvedOutput,markNumber,validityPeriodInterval");
         sba.append(",网址,认证人,联系人,电话,企业地址第二备用,新邮地址,企业地址备用,邮箱,企业信息码,联系人电话");
         sbb.append(
-                ",webUrl,issuingPersion,enterpriseContactPerson,phone,addressTwo,newEmailAddress,addressThree,email,enterpriseInformationCode,contactPersonPhone");
+                ",webUrl,issuingPerson,enterpriseContactPerson,phone,addressTwo,newEmailAddress,addressThree,email,enterpriseInformationCode,contactPersonPhone");
         sba.append(",医疗单位,主治功能或适应症");
         sbb.append(",medicalUnit,primaryFunctionOrIndication");
         sba.append(",有效日期起,有效日期止,GSP许可证有效日期起,GSP许可证有效日期止");
@@ -409,7 +473,7 @@ public class Translation {
         sbb.append(
                 ",registrationCertificateNumber,registrarName,registrarResidence,agentName,agentResidence,model,specificationOrPackagingSpecification,applicableScopeOrExpectedUse,productStorageConditionsValidityPeriod,otherContents,approvalDepartment,approvalDate,changeInformation");
         sba.append(",备案人名称,产品类名称,包装规格,产品有效期,主要组成成分");
-        sbb.append(",nameFiler,nameProductCategory,packingSpecification,validityPeriodProduct,mainComponents");
+        sbb.append(",recordPersonName,productCategoryName,packingSpecification,validityPeriodProduct,mainComponents");
         sba.append(",备案人组织机构代码,备案人注册地址,型号/规格,产品描述,预期用途,变更情况,检查监督情况");
         sbb.append(
                 ",organizationalCodeRecorder,registrationAddress,modelSpecification,productDescription,expectedUse,change,inspectionSupervisionRecorder");
